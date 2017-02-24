@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  question: MyString
+  expiration: 2017-02-24 16:44:58
+  comment: MyString
+  creator_id: 1
+  final_choice_id: 1
+
+two:
+  question: MyString
+  expiration: 2017-02-24 16:44:58
+  comment: MyString
+  creator_id: 1
+  final_choice_id: 1

@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  adder_id: 1
+  accepter_id: 1
+  accepted?: false
+
+two:
+  adder_id: 1
+  accepter_id: 1
+  accepted?: false
