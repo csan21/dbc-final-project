@@ -1,0 +1,16 @@
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  pool: 5
+
+development:
+  <<: *default
+  database: dbc-final-project_development
+
+test:
+  <<: *default
+  database: dbc-final-project_test
+
+production:
+  <<: *default
+  database: dbc-final-project_development
