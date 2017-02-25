@@ -14,3 +14,50 @@ users = [
 ]
 
 User.create!(users)
+
+users_array = User.all.map { |user| user.id }
+
+
+polls = [
+  { question: "Question one", expiration: Time.now.tomorrow, creator_id: users_array.sample },
+  { question: "Question two", expiration: Time.now.tomorrow, creator_id: users_array.sample },
+  { question: "Question three", expiration: Time.now.tomorrow, creator_id: users_array.sample },
+  { question: "Question four", expiration: Time.now.tomorrow, creator_id: users_array.sample },
+  { question: "Question five", expiration: Time.now, creator_id: users_array.sample, comment: "going with my gut", active?: false }
+]
+
+Poll.create!(polls)
+
+polls_array = Poll.all.map { |poll| poll.id }
+
+answers = [
+  { text: "yes", poll_id: Poll.last.id, chosen?: true },
+  { text: "no", poll_id: Poll.last.id },
+  { text: "yes", poll_id: polls_array[1] },
+  { text: "no", poll_id: polls_array[1] },
+  { text: "yes", poll_id: polls_array[2] },
+  { text: "no", poll_id: polls_array[2] },
+  { text: "yes", poll_id: polls_array[3] } ,
+  { text: "no", poll_id: polls_array[3] },
+  { text: "yes", poll_id: polls_array[0] },
+  { text: "no", poll_id: polls_array[0] }
+]
+
+Answer.create!(answers)
+
+friends = [
+  { adder_id: 1, accepter_id: 2, accepted?: true },
+  { adder_id: 1, accepter_id: 3, accepted?: true },
+  { adder_id: 1, accepter_id: 4, accepted?: false },
+  { adder_id: 2, accepter_id: 1, accepted?: false },
+  { adder_id: 2, accepter_id: 3, accepted?: true },
+  { adder_id: 2, accepter_id: 4, accepted?: true },
+  { adder_id: 3, accepter_id: 2, accepted?: false },
+  { adder_id: 3, accepter_id: 1, accepted?: true },
+  { adder_id: 3, accepter_id: 4, accepted?: true },
+  { adder_id: 4, accepter_id: 2, accepted?: true },
+  { adder_id: 4, accepter_id: 1, accepted?: true },
+  { adder_id: 4, accepter_id: 3, accepted?: false }
+]
+
+Friendship.create!(friends)
