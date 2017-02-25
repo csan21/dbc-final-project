@@ -5,7 +5,7 @@ default: &default
 
 development:
   <<: *default
-  database: dbc-final-project_test
+  database: dbc-final-project_development
 
 test:
   <<: *default
