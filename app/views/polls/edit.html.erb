@@ -1,0 +1,13 @@
+<h2><%= @poll.question %></h2>
+
+
+<form method="post" action="/users/<%= session[:user_id] %>/polls">
+  Make your final selection:
+  <% @poll.answers.each do |answer| %>
+    <br><input type="radio" name="vote" value="<%= answer.id %>"><%= answer.text %>
+  <% end %><br>
+
+  <textarea name="question" rows="4" cols="50" placeholder="Type your comment"></textarea><br>
+
+  <input type="submit" value="Submit">
+</form>

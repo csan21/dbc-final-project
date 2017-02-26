@@ -1,9 +1,4 @@
 class User < ApplicationRecord
-  # Include default devise modules. Others available are:
-  # :confirmable, :lockable, :timeoutable and :omniauthable
-  devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :trackable, :validatable
-
   has_many :created_polls, class_name: :Poll, foreign_key: :creator_id
   has_many :votes
   has_many :chosen_answers, through: :votes, source: :answer
@@ -14,6 +9,8 @@ class User < ApplicationRecord
   before_create do
     self.invite_code = SecureRandom.hex(4);
   end
+
+  has_secure_password
 
   def sorted_created_polls
     Poll.where(creator_id: self.id).order(created_at: :desc)

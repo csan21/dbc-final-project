@@ -1,8 +1,12 @@
 <h2><%= @poll.question %></h1>
 
-<ul>
-  <% @poll.answers.each do |answer| %>
-    <li><%= button_to answer.text, votes_path(answer_id: answer.id) %>
-  <% end %>
-</ul>
+<% if @poll.creator_id == session[:user_id] %>
+  <%= link_to "End this poll", edit_user_poll_path %>
+<% else %>
+  <ul>
+    <% @poll.answers.each do |answer| %>
+      <li><%= button_to answer.text, votes_path(answer_id: answer.id) %>
+    <% end %>
+  </ul>
+<% end %>
 

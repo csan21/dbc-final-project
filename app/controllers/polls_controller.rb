@@ -21,4 +21,9 @@ class PollsController < ApplicationController
 
     redirect_to "/users/#{session[:user_id]}"
   end
+
+  def edit
+    @poll = Poll.find_by(id: params["id"])
+
+  end
 end
