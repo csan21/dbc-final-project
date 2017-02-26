@@ -1,0 +1,9 @@
+<h1>Log in to Squad</h1>
+
+<%= form_for :session, url: '/sessions' do |f| %>
+
+  Email:<br><%= f.text_field :email %><br>
+  Password:<br><%= f.password_field :password %><br>
+  <%= f.submit "Submit" %>
+
+<% end %>
