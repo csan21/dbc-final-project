@@ -7,5 +7,6 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :users, :polls, :answers, :votes only: [:create]
+  resources :users, :polls, :answers
+  resources :votes, only: [:create]
 end
