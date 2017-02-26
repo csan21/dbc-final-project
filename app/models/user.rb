@@ -16,8 +16,9 @@ class User < ApplicationRecord
 
   has_secure_password
 
-  def sorted_created_polls
-    Poll.where(creator_id: self.id).order(created_at: :desc)
+  def sorted_created_current_polls
+    my_polls = self.created_polls.select { |poll| poll.current? }
+    my_polls.sort_by { |poll| poll.created_at }.reverse
   end
 
   def polls_to_answer
@@ -25,7 +26,7 @@ class User < ApplicationRecord
 
     self.squad_membership_users.each do |user|
       user.created_polls.each do |poll|
-        if poll.active?
+        if poll.current?
           polls_to_answer << poll
         end
       end
@@ -33,8 +34,17 @@ class User < ApplicationRecord
     return polls_to_answer - self.taken_polls
   end
 
+  def sorted_created_old_polls
+    my_polls = self.created_polls.select { |poll| poll.current? == false }
+    my_polls.sort_by { |poll| poll.created_at }.reverse
+  end
+
   def taken_polls
     self.chosen_answers.map { |answer| answer.poll }
+  end
+
+   def recent_taken_polls
+    self.taken_polls.select { |poll| poll.created_at > 1.day.ago}
   end
 
   # Returns the hash digest of the given string.

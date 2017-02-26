@@ -1,12 +1,24 @@
-<h2><%= @poll.question %></h1>
+<h2><%= @poll.question %></h2>
+<i>Poll expires <%= @poll.sexy_expiration %></i><br><br>
 
 <% if @poll.creator_id == session[:user_id] %>
-  <%= link_to "End this poll", edit_user_poll_path %>
+  <% @poll.answers.each do |answer| %>
+    <%= answer.text %> - <%= answer.votes.count %> votes <% if @poll.votes.count > 0 %> (<%= (answer.votes.count / @poll.votes.count) %>) <% end %><br>
+  <% end %><br>
+  <% if @poll.current? == true %>
+    <%= link_to "End this poll", edit_user_poll_path %>
+  <% end %>
 <% else %>
-  <ul>
+  <% if @poll.votes.where(user_id: session[:user_id]).length > 0 && @poll.current? %>
+    Thanks for voting! Results coming soon!
+  <% elsif @poll.votes.where(user_id: session[:user_id]).length > 0 %>
     <% @poll.answers.each do |answer| %>
-      <li><%= button_to answer.text, votes_path(answer_id: answer.id) %>
-    <% end %>
-  </ul>
+      <%= answer.text %> - <%= answer.votes.count %> votes <% if @poll.votes.count > 0 %> (<%= (answer.votes.count / @poll.votes.count) %>) <% end %><br>
+    <% end %><br>
+  <% else %>
+      <% @poll.answers.each do |answer| %>
+        <%= button_to answer.text, votes_path(answer_id: answer.id) %><br>
+      <% end %>
+  <% end %>
 <% end %>
 
