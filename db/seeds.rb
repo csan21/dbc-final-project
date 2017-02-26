@@ -1,8 +1,8 @@
 users = [
-  { name: "Cody", email: "cody@squad.com", phone_number: ENV['CODY_NUMBER'], password: "password", password_confirmation: "password"},
-  { name: "Chris", email: "chris@squad.com", phone_number: ENV['CHRIS_NUMBER'], password: "password", password_confirmation: "password"},
-  { name: "Nick", email: "nick@squad.com", phone_number: ENV['NICK_NUMBER'], password: "password", password_confirmation: "password"},
-  { name: "Pavan", email: "pavan@squad.com", phone_number: ENV['PAVAN_NUMBER'], password: "password", password_confirmation: "password"}
+  { name: "Cody", email: "cody@squad.com", phone_number: ENV['CODY_NUMBER'], password: "password"},
+  { name: "Chris", email: "chris@squad.com", phone_number: ENV['CHRIS_NUMBER'], password: "password"},
+  { name: "Nick", email: "nick@squad.com", phone_number: ENV['NICK_NUMBER'], password: "password"},
+  { name: "Pavan", email: "pavan@squad.com", phone_number: ENV['PAVAN_NUMBER'], password: "password"}
 ]
 
 User.create!(users)
