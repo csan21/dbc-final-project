@@ -1,5 +1,5 @@
 class PollsController < ApplicationController
-  skip_before_filter :verify_authenticity_token
+  #skip_before_filter :verify_authenticity_token
   #skip_before_filter :authenticate_user!, :only => "reply"
 
   def show
@@ -14,11 +14,16 @@ class PollsController < ApplicationController
     @poll = Poll.create(
       question: params["question"],
       expiration: Time.now + params["expiration"].to_i,
-      creator_id: 1
+      creator_id: session[:user_id]
     )
     Answer.create(text: params["answer1"], poll_id: @poll.id)
     Answer.create(text: params["answer2"], poll_id: @poll.id)
 
-    redirect_to "/users/1"
+    redirect_to "/users/#{session[:user_id]}"
+  end
+
+  def edit
+    @poll = Poll.find_by(id: params["id"])
+
   end
 end
