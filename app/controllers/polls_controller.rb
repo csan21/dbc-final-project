@@ -24,6 +24,15 @@ class PollsController < ApplicationController
 
   def edit
     @poll = Poll.find_by(id: params["id"])
+  end
 
+  def update
+    @answer = Answer.find_by(id: params["chosen_answer"].to_i)
+    @answer.update_attribute(:chosen?, true)
+    @poll = Poll.find_by(id: params["id"])
+    @poll.update_attribute(:active?, false)
+    @poll.update_attribute(:comment, params["comment"])
+
+    redirect_to "/users/#{session[:user_id]}"
   end
 end
