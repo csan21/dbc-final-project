@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  devise_for :users
+  devise_for :users, controller: { sessions: 'users/sessions' }
   # root to: "home#index"
   resource :messages do
     collection do
@@ -7,5 +7,6 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :users, :polls, :answers, :votes
+  resources :users, :polls, :answers
+  resources :votes, only: [:create]
 end

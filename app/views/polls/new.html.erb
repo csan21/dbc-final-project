@@ -1,0 +1,17 @@
+<h2>Post a new poll</h2>
+
+
+<form method="post" action="/polls">
+  <textarea name="question" rows="4" cols="50" placeholder="Type your question"></textarea><br>
+  Answer:<br>
+  <input type="text" name="answer1" value="yes">
+  <br>
+  Other answer:<br>
+  <input type="text" name="answer2" value="no">
+  <br><br>
+  <input type="radio" name="expiration" value="600">Ten minutes
+  <input type="radio" name="expiration" value="3600">One hour
+  <input type="radio" name="expiration" value="86400">One day<br><br>
+  <input type="submit" value="Submit">
+</form>
+
