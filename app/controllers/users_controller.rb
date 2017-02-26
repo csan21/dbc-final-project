@@ -1,4 +1,6 @@
 class UsersController < ApplicationController
+  include UsersHelper
+
   def show
     @user = User.find(params[:id])
     if @user.id != session[:user_id]
@@ -13,7 +15,7 @@ class UsersController < ApplicationController
     user = User.new(user_params)
     if user.save
       session[:user_id] = user.id
-      redirect_to "/users/#{user.id}"
+      redirect_to user
     else
       redirect_to '/users/new'
     end
