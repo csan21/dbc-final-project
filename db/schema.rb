@@ -16,29 +16,30 @@ ActiveRecord::Schema.define(version: 20170224235222) do
   enable_extension "plpgsql"
 
   create_table "answers", force: :cascade do |t|
-    t.string   "text"
+    t.string   "text",                       null: false
     t.integer  "poll_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.boolean  "chosen?",    default: false
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
     t.index ["poll_id"], name: "index_answers_on_poll_id", using: :btree
   end
 
   create_table "friendships", force: :cascade do |t|
     t.integer  "adder_id"
     t.integer  "accepter_id"
-    t.boolean  "accepted?"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.boolean  "accepted?",   default: false
+    t.datetime "created_at",                  null: false
+    t.datetime "updated_at",                  null: false
   end
 
   create_table "polls", force: :cascade do |t|
-    t.string   "question"
-    t.datetime "expiration"
+    t.string   "question",                  null: false
+    t.datetime "expiration",                null: false
     t.string   "comment"
-    t.integer  "creator_id"
-    t.integer  "final_choice_id"
-    t.datetime "created_at",      null: false
-    t.datetime "updated_at",      null: false
+    t.integer  "creator_id",                null: false
+    t.boolean  "active?",    default: true
+    t.datetime "created_at",                null: false
+    t.datetime "updated_at",                null: false
   end
 
   create_table "users", force: :cascade do |t|

@@ -1,0 +1,8 @@
+<h1><%= @poll.question %></h1>
+
+<ul>
+  <% @poll.answers.each do |answer| %>
+    <li><%= link_to answer.text, answer_path(answer) %>
+  <% end %>
+</ul>
+
