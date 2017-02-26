@@ -1,12 +1,12 @@
 <h1><%= @user.name %></h1>
 
-<%= link_to "Post a new poll", new_poll_path %>
+<%= link_to "Post a new poll", new_user_poll_path(@user.id) %>
 
 <h2>These polls need your vote</h2>
 
 <ul>
   <% @user.polls_to_answer.each do |poll| %>
-    <li><%= link_to poll.question, poll_path(poll) %>
+    <li><%= link_to poll.question, user_poll_path(user_id: poll.creator_id, id: poll.id) %>
   <% end %>
 </ul>
 
@@ -14,7 +14,7 @@
 
 <ul>
   <% @user.sorted_created_polls.each do |poll| %>
-    <li><%= link_to poll.question, poll_path(poll) %>
+    <li><%= link_to poll.question, user_poll_path(user_id: poll.creator_id, id: poll.id) %>
   <% end %>
 </ul>
 
@@ -22,7 +22,7 @@
 
 <ul>
   <% @user.taken_polls.each do |poll| %>
-    <li><%= link_to poll.question, poll_path(poll) %>
+    <li><%= link_to poll.question, user_poll_path(user_id: poll.creator_id, id: poll.id) %>
   <% end %>
 </ul>
 

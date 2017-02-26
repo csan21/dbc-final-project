@@ -1,8 +1,6 @@
 class VotesController < ApplicationController
   def create
-    p "X" * 50
-    p params["answer_id"]
-    p "X" * 50
-    Vote.create(user_id: , answer_id: params["answer_id"].to_i)
+    Vote.create(user_id: session[:user_id], answer_id: params["answer_id"].to_i)
+    redirect_to "/users/#{session[:user_id]}"
   end
 end
