@@ -19,7 +19,6 @@ class User < ApplicationRecord
 
   def polls_to_answer
     polls_to_answer = []
-
     self.squad_membership_users.each do |user|
       user.created_polls.each do |poll|
         if poll.current?
