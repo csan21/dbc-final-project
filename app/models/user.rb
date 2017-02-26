@@ -1,6 +1,4 @@
 class User < ApplicationRecord
-  has_secure_password
-
   has_many :created_polls, class_name: :Poll, foreign_key: :creator_id
   has_many :votes
   has_many :chosen_answers, through: :votes, source: :answer
