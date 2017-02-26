@@ -18,6 +18,12 @@
 
 <h2>Past polls you've voted in</h2>
 
+<ul>
+  <% @user.taken_polls.each do |poll| %>
+    <li><%= link_to poll.question, poll_path(poll) %>
+  <% end %>
+</ul>
+
 
 
 
