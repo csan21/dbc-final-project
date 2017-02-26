@@ -12,6 +12,8 @@ class User < ApplicationRecord
     self.invite_code = SecureRandom.hex(4);
   end
 
+  has_secure_password
+
   def sorted_created_polls
     Poll.where(creator_id: self.id).order(created_at: :desc)
   end
