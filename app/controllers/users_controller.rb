@@ -1,6 +1,9 @@
 class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
+    if @user.id != session[:user_id]
+      render :file => "#{Rails.root}/public/404.html", :status => 404
+    end
   end
 
   def new

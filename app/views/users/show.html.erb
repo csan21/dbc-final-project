@@ -1,30 +1,31 @@
-<h1><%= @user.name %></h1>
 
-<%= link_to "Post a new poll", new_user_poll_path(@user.id) %>
+  <h1><%= @user.name %></h1>
 
-<h2>These polls need your vote</h2>
+  <%= link_to "Post a new poll", new_user_poll_path(@user.id) %>
 
-<ul>
-  <% @user.polls_to_answer.each do |poll| %>
-    <li><%= link_to poll.question, user_poll_path(user_id: poll.creator_id, id: poll.id) %>
-  <% end %>
-</ul>
+  <h2>These polls need your vote</h2>
 
-<h2>Created polls</h2>
+    <% @user.polls_to_answer.each do |poll| %>
+      <%= link_to poll.question, user_poll_path(user_id: poll.creator_id, id: poll.id) %><br>
+    <% end %>
 
-<ul>
-  <% @user.sorted_created_polls.each do |poll| %>
-    <li><%= link_to poll.question, user_poll_path(user_id: poll.creator_id, id: poll.id) %>
-  <% end %>
-</ul>
+  <h2>My current polls</h2>
 
-<h2>Past polls you've voted in</h2>
+    <% @user.sorted_created_current_polls.each do |poll| %>
+      <%= link_to poll.question, user_poll_path(user_id: poll.creator_id, id: poll.id) %><br>
+    <% end %>
 
-<ul>
-  <% @user.taken_polls.each do |poll| %>
-    <li><%= link_to poll.question, user_poll_path(user_id: poll.creator_id, id: poll.id) %>
-  <% end %>
-</ul>
+  <h2>Recent polls you've voted in</h2>
+
+    <% @user.recent_taken_polls.each do |poll| %>
+      <%= link_to poll.question, user_poll_path(user_id: poll.creator_id, id: poll.id) %><br>
+    <% end %>
+
+  <h2>Your old shit</h2>
+
+    <% @user.sorted_created_old_polls.each do |poll| %>
+      <%= link_to poll.question, user_poll_path(user_id: poll.creator_id, id: poll.id) %><br>
+    <% end %>
 
 
 
