@@ -5,27 +5,27 @@
 
   <h2>These polls need your vote</h2>
 
-  <ul>
     <% @user.polls_to_answer.each do |poll| %>
-      <li><%= link_to poll.question, user_poll_path(user_id: poll.creator_id, id: poll.id) %>
+      <%= link_to poll.question, user_poll_path(user_id: poll.creator_id, id: poll.id) %><br>
     <% end %>
-  </ul>
 
-  <h2>Created polls</h2>
+  <h2>My current polls</h2>
 
-  <ul>
-    <% @user.sorted_created_polls.each do |poll| %>
-      <li><%= link_to poll.question, user_poll_path(user_id: poll.creator_id, id: poll.id) %>
+    <% @user.sorted_created_current_polls.each do |poll| %>
+      <%= link_to poll.question, user_poll_path(user_id: poll.creator_id, id: poll.id) %><br>
     <% end %>
-  </ul>
 
-  <h2>Past polls you've voted in</h2>
+  <h2>Recent polls you've voted in</h2>
 
-  <ul>
-    <% @user.taken_polls.each do |poll| %>
-      <li><%= link_to poll.question, user_poll_path(user_id: poll.creator_id, id: poll.id) %>
+    <% @user.recent_taken_polls.each do |poll| %>
+      <%= link_to poll.question, user_poll_path(user_id: poll.creator_id, id: poll.id) %><br>
     <% end %>
-  </ul>
+
+  <h2>Your old shit</h2>
+
+    <% @user.sorted_created_old_polls.each do |poll| %>
+      <%= link_to poll.question, user_poll_path(user_id: poll.creator_id, id: poll.id) %><br>
+    <% end %>
 
 
 
