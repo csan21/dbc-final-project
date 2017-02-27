@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  root 'static#index'
+  root 'sessions#new'
 
   resource :messages do
     collection do

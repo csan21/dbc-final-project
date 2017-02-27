@@ -1,14 +1,10 @@
 <% if !logged_in? %>
   <div class="nav-buttons">
-    <li><a href="/">Home</a></li>
     <li><%= link_to "Register", new_user_path %></li>
     <li><%= link_to "Login", new_session_path %></li>
   </div>
-<% end %>
-
-<% if logged_in? %>
+<% else %>
   <div class="nav-buttons">
-    <li><a href="/">Home</a></li>
     <li></li>
     <li><%= link_to "Log Out", session_path(session), method: :delete %></li>
   </div>
