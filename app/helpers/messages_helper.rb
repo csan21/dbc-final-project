@@ -5,7 +5,7 @@ module MessagesHelper
     sms = @client.messages.create(
       from: Rails.application.secrets.twilio_number,
       to: number,
-      body: "#{current_user.name} wants to be your friend on Squad!"
+      body: "#{current_user.name} wants to be your friend on Squad! Reply 'accept 16' to accept."
     )
   end
 
