@@ -1,0 +1,8 @@
+<h1>Add a friend on Squad</h1>
+
+<form method="post" action="/users/<%= session[:user_id] %>/friendships">
+  <input type="text" name="name" placeholder="Name"><br>
+  <input type="tel" name="phone" placeholder="Phone">
+  <br><br>
+  <input type="submit" value="Submit">
+</form>

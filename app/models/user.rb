@@ -9,6 +9,7 @@ class User < ApplicationRecord
   has_many :squad_members, class_name: :Friendship, foreign_key: :adder_id
   has_many :squad_memberships, class_name: :Friendship, foreign_key: :accepter_id
   has_many :squad_membership_users, through: :squad_memberships, source: :adder
+  has_many :squad_member_users, through: :squad_members, source: :accepter
 
   before_create do
     self.invite_code = SecureRandom.hex(4);
@@ -21,9 +22,17 @@ class User < ApplicationRecord
     my_polls.sort_by { |poll| poll.created_at }.reverse
   end
 
+  def friends_who_have_accepted
+    my_friendships = self.squad_members.where(accepted?: true)
+    my_friendships.map { |friendship| friendship.accepter }
+  end
+
+  def incoming_friend_requests
+    self.squad_memberships.where(accepted?: false)
+  end
+
   def polls_to_answer
     polls_to_answer = []
-
     self.squad_membership_users.each do |user|
       user.created_polls.each do |poll|
         if poll.current?

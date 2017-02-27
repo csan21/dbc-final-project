@@ -1,16 +1,19 @@
 class MessagesController < ApplicationController
-  skip_before_filter :verify_authenticity_token
-  #skip_before_filter :authenticate_user!, :only => "reply"
 
    def reply
     message_body = params["Body"]
     from_number = params["From"]
 
+    # if message_body[0] == "accept"
+    #   friendship = Friendship.find_by(id: message_body[1])
+    #   friendship.update_attribute(accepted?: true)
+    # end
+
     boot_twilio
     sms = @client.messages.create(
       from: Rails.application.secrets.twilio_number,
       to: from_number,
-      body: "I received the following message: #{message_body}"
+      body: "Thanks for accepting this friend request!"
     )
   end
 
