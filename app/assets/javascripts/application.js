@@ -13,29 +13,8 @@
 //= require jquery
 //= require jquery_ujs
 //= require turbolinks
-//= require_tree .
+
+
 $(document).ready(function() {
-  testLive;
+  console.log("hello");
 });
-
-
-var startLive = window.setInterval(
-     function(){
-       $.ajax({
-         method: "GET",
-         url: "/users/:user_id/polls/:id"
-       })
-       .done(function(response){
-         $("#questions-homepage").replaceWith(response);
-       });
-
-      //  $(document).css("background-color","black");
-     },
-     10000  /* 10000 ms = 10 sec */
-);
-
-// var testLive = window.setInterval(function(){
-//   console.log('CHRIS');
-//   },
-//   1000
-// );

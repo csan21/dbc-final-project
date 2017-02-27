@@ -1,29 +1,32 @@
 <h2><%= @poll.question %></h2>
 <div id="poll-container"
   <% if @poll.current? %>
-  <i>Poll expires <%= @poll.sexy_expiration %></i><br><br>
+    <i>Poll expires <%= @poll.sexy_expiration %></i><br><br>
   <% end %>
 
-  <% if @poll.creator_id == session[:user_id] %>
-     <div id="poll-votes">
-      <%= render partial: 'polls/poll_votes', layout: false, locals: {poll: @poll} %>
-    </div>
+<% if @poll.creator_id == session[:user_id] %>
+
+  <div id="poll-votes">
+    <%= render partial: 'polls/poll_votes', layout: false, locals: {poll: @poll} %>
+  </div>
     <% if @poll.current? == true %>
       <%= link_to "End this poll", edit_user_poll_path %>
     <% end %>
 
-  <% else %>
-    <% if @poll.votes.where(user_id: session[:user_id]).length > 0 && @poll.current? %>
-      Thanks for voting! Results coming soon!
-    <% elsif @poll.votes.where(user_id: session[:user_id]).length > 0 %>
+<% else %>
+
+  <% if @poll.votes.where(user_id: session[:user_id]).length > 0 && @poll.current? %>
+    Thanks for voting! Results coming soon!
+  <% elsif @poll.votes.where(user_id: session[:user_id]).length > 0 %>
     <div id="poll-votes">
       <%= render partial: 'polls/poll_votes', layout: false, locals: {poll: @poll} %>
     </div>
-    <% else %>
-        <% @poll.answers.each do |answer| %>
-          <%= button_to answer.text, votes_path(answer_id: answer.id) %><br>
-        <% end %>
+  <% else %>
+    <% @poll.answers.each do |answer| %>
+      <%= button_to answer.text, votes_path(answer_id: answer.id) %><br>
     <% end %>
   <% end %>
+
+<% end %>
 </div>
 
