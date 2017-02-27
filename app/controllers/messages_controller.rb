@@ -5,10 +5,6 @@ class MessagesController < ApplicationController
     message_body = params["Body"].split
     from_number = params["From"]
 
-    puts "\n" * 20
-    p message_body
-    puts "\n" * 20
-
     if message_body[0] == "accept"
       friendship = Friendship.find_by(id: message_body[1].to_i)
       friendship.update_attribute(:accepted?, true)

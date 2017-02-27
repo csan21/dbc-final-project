@@ -1,6 +1,5 @@
 class FriendshipsController < ApplicationController
   # protect_from_forgery with: :null_session
-    include UsersHelper
 
   def index
     @friends = User.find_by(id: params[:user_id]).friends_who_have_accepted
@@ -10,9 +9,10 @@ class FriendshipsController < ApplicationController
   end
 
   def create
-    friend_add(params["phone"])
-    @user = User.create(name: params["name"], email: "place55@holder.com", password: "password", phone_number: params["phone"])
-    Friendship.create(adder_id: session[:user_id], accepter_id: @user.id)
+
+    @user = User.create(name: params["name"], email: SecureRandom.hex(4) + "@random.com", password: "password", phone_number: params["phone"])
+    @friendship = Friendship.create(adder_id: session[:user_id], accepter_id: @user.id)
+    friend_add(params["phone"], @friendship.id)
     redirect_to "/users/#{current_user.id}/friendships"
   end
 

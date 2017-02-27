@@ -1,9 +1,10 @@
-<h1>Log in to Squad</h1>
-
-<%= form_for :session, url: '/sessions' do |f| %>
-
-  Email:<br><%= f.text_field :email %><br>
-  Password:<br><%= f.password_field :password %><br>
-  <%= f.submit "Submit" %>
-
-<% end %>
+<div class="login-page">
+  <div class="form">
+    <%= form_for :session, url: '/sessions' do |f| %>
+      <%= f.text_field :email, placeholder: "email" %><br>
+      <%= f.password_field :password, placeholder: "password" %><br>
+      <%= f.submit "LOGIN", class: "button" %>
+    <% end %>
+    <p class="message">Not on Squad?<a href="/sessions/new"> Sign up</a></p>
+  </div>
+</div>

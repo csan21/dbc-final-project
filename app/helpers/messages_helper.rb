@@ -1,12 +1,12 @@
 module MessagesHelper
-  include UsersHelper
 
-  def friend_add(number)
+
+  def friend_add(number, friendship_id)
     boot_twilio
     sms = @client.messages.create(
       from: Rails.application.secrets.twilio_number,
       to: number,
-      body: "Someone wants to be your friend on Squad! Reply 'accept 16' to accept."
+      body: "#{current_user.name} wants to be your friend on Squad! Reply 'accept #{friendship_id}' to accept."
     )
   end
 

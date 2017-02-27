@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  root 'sessions#new'
 
   resource :messages do
     collection do
