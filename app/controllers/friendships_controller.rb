@@ -10,6 +10,7 @@ class FriendshipsController < ApplicationController
 
   def create
 
+    #if User.find_by(phone_number:)
     @user = User.create(name: params["name"], email: SecureRandom.hex(4) + "@random.com", password: "password", phone_number: params["phone"])
     @friendship = Friendship.create(adder_id: session[:user_id], accepter_id: @user.id)
     friend_add(params["phone"], @friendship.id)
