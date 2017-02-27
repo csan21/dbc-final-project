@@ -1,0 +1,6 @@
+<% poll.answers.each do |answer| %>
+      <%= answer.text %> - <%= answer.votes.count %> votes
+      <% if poll.votes.count > 0 %>
+        (<%= (answer.votes.count / poll.votes.count) %>%)
+      <% end %><br>
+<% end %><br>
