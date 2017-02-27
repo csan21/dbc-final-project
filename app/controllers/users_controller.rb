@@ -14,7 +14,7 @@ class UsersController < ApplicationController
   def create
     user = User.new(user_params)
     if user.save
-      session[:user_id] = user.id
+      set_session(user)
       redirect_to user
     else
       redirect_to '/users/new'

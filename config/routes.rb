@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  root 'static#index'
 
   resource :messages do
     collection do
