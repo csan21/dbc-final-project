@@ -18,6 +18,15 @@ class User < ApplicationRecord
     my_polls.sort_by { |poll| poll.created_at }.reverse
   end
 
+  def friends_who_have_accepted
+    my_friendships = self.squad_members.where(accepted?: true)
+    my_friendships.map { |friendship| friendship.accepter }
+  end
+
+  def incoming_friend_requests
+    self.squad_memberships.where(accepted?: false)
+  end
+
   def polls_to_answer
     polls_to_answer = []
     self.squad_membership_users.each do |user|
