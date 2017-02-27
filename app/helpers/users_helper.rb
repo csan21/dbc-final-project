@@ -10,4 +10,9 @@ module UsersHelper
   def set_session(user)
     session[:user_id] = user.id
   end
+
+  def delete_session
+    session.delete(:user_id)
+    @current_user = nil
+  end
 end
