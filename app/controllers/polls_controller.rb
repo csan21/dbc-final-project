@@ -4,6 +4,9 @@ class PollsController < ApplicationController
 
   def show
     @poll = Poll.find(params[:id])
+    if request.xhr?
+      render partial: 'polls/poll_votes', layout: false, locals: {poll: @poll}
+    end
   end
 
   def new
@@ -20,7 +23,7 @@ class PollsController < ApplicationController
     Answer.create(text: params["answer2"], poll_id: @poll.id)
 
     current_user.friends_who_have_accepted.each do |friend|
-      if friend.phone_number == "13093379871"
+      if friend.phone_number == "+13093379871"
         solicit_vote(friend.phone_number, @poll)
       end
     end
