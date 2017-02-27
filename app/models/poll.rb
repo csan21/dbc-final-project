@@ -1,6 +1,7 @@
 class Poll < ApplicationRecord
   has_many :answers
   has_many :votes, through: :answers
+  belongs_to :creator, class_name: :User
 
   def current?
     self.expiration > Time.now && self.active? == true

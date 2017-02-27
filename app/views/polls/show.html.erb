@@ -1,4 +1,5 @@
 <h2><%= @poll.question %></h2>
+<h3>by <%= @poll.creator.name %></h3>
 
 <% if @poll.current? %>
 <i>Poll expires <%= @poll.sexy_expiration %></i><br><br>
@@ -15,9 +16,7 @@
   <% end %>
 
 <% else %>
-  <% if @poll.votes.where(user_id: session[:user_id]).length > 0 && @poll.current? %>
-    Thanks for voting! Results coming soon!
-  <% elsif @poll.votes.where(user_id: session[:user_id]).length > 0 %>
+  <% if @poll.votes.where(user_id: session[:user_id]).length > 0 %>
     <% @poll.answers.each do |answer| %>
       <%= answer.text %> - <%= answer.votes.count %> votes <% if @poll.votes.count > 0 %> (<%= (answer.votes.count / @poll.votes.count) %>) <% end %><br>
     <% end %><br>
@@ -26,5 +25,9 @@
         <%= button_to answer.text, votes_path(answer_id: answer.id) %><br>
       <% end %>
   <% end %>
+<% end %>
+
+<% if @poll.comment %>
+  Comment: <%= @poll.comment %>
 <% end %>
 
