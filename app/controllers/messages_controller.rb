@@ -1,13 +1,14 @@
 class MessagesController < ApplicationController
+  protect_from_forgery with: :null_session
 
    def reply
-    message_body = params["Body"]
+    message_body = params["Body"].split
     from_number = params["From"]
 
-    # if message_body[0] == "accept"
-    #   friendship = Friendship.find_by(id: message_body[1])
-    #   friendship.update_attribute(accepted?: true)
-    # end
+    if message_body[0] == "accept"
+      friendship = Friendship.find_by(id: message_body[1].to_i)
+      friendship.update_attribute(:accepted?, true)
+    end
 
     boot_twilio
     sms = @client.messages.create(
@@ -25,3 +26,5 @@ class MessagesController < ApplicationController
     @client = Twilio::REST::Client.new account_sid, auth_token
   end
 end
+
+# ENV["TWILIO_TOKEN"]
