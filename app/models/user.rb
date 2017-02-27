@@ -5,6 +5,7 @@ class User < ApplicationRecord
   has_many :squad_members, class_name: :Friendship, foreign_key: :adder_id
   has_many :squad_memberships, class_name: :Friendship, foreign_key: :accepter_id
   has_many :squad_membership_users, through: :squad_memberships, source: :adder
+  has_many :squad_member_users, through: :squad_members, source: :accepter
 
   before_create do
     self.invite_code = SecureRandom.hex(4);
