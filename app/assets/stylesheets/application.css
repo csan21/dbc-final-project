@@ -243,3 +243,8 @@ li.active a {
 #new_poll label.btn {
   font-size: 1em;
 }
+
+#new-user-error-list {
+  margin-top: 20px;
+}
+

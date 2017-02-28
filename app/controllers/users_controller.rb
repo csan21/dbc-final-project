@@ -8,16 +8,21 @@ class UsersController < ApplicationController
     end
   end
 
+  def index
+    redirect_to new_user_path
+  end
+
   def new
+    @user = User.new
   end
 
   def create
-    user = User.new(user_params)
-    if user.save
-      set_session(user)
-      redirect_to user
+    @user = User.new(user_params)
+    if @user.save
+      set_session(@user)
+      redirect_to @user
     else
-      redirect_to '/users/new'
+      render :new
     end
   end
 
