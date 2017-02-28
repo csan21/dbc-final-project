@@ -1,5 +1,4 @@
-
-  <h1><%= @user.name %></h1>
+<h1><%= @user.name %></h1>
   <%= link_to "Your Squad", user_friendships_path(@user.id) %><br>
   <%= link_to "Add a member to your Squad", new_user_friendship_path(@user.id) %><br>
   <%= link_to "Post a new poll", new_user_poll_path(@user.id) %><br><br>
