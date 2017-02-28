@@ -1,17 +1,22 @@
 <% if !logged_in? %>
-<nav class="navbar navbar-inverse navbar-fixed-bottom">
+<nav class="navbar navbar-inverse navbar-fixed-top">
   <div class="container-fluid">
     <ul class="nav navbar-nav">
       <li><%= link_to "Register", new_user_path %></li>
       <li><%= link_to "Login", new_session_path %></li>
     </ul>
   </div>
+</nav>
 <% else %>
-<nav class="navbar navbar-inverse navbar-fixed-bottom">
+<nav class="navbar navbar-inverse navbar-fixed-top">
   <div class="container-fluid">
     <ul class="nav navbar-nav">
-      <li></li>
-      <li><%= link_to "Log Out", session_path(session), method: :delete %></li>
+      <li><%= link_to "Dashboard", user_path(current_user.id) %></li>
+      <li><%= link_to "Squad", user_friendships_path(current_user.id) %></li>
+      <li><%= link_to "Add", new_user_friendship_path(current_user.id) %></li>
+      <li><%= link_to "Create", new_user_poll_path(current_user.id) %></li>
+      <li><%= link_to "Logout", session_path(session), method: :delete %></li>
     </ul>
   </div>
+</nav>
 <% end %>
