@@ -1,16 +1,16 @@
 <div class="container">
   <div class="row">
     <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-      <div class="account-wall">
-        <% if @user.errors.messages.length > 0 %>
-          <ul id="new-user-error-list">
-          <% @user.errors.messages.each do |error| %>
-            <li id="new-user-error">
-              <%= "#{error[0]}"+" "+"#{error[1][0]}" %>
-            </li>
-          <% end %>
-          </ul>
+      <% if @user.errors.messages.length > 0 %>
+        <ul id="new-user-error-list">
+        <% @user.errors.messages.each do |error| %>
+          <li id="new-user-error">
+            <%= "#{error[0]}"+" "+"#{error[1][0]}" %>
+          </li>
         <% end %>
+        </ul>
+      <% end %>
+      <div class="account-wall">
         <p class="sign-in">register</p>
         <form class="form-signin" action="/users" method="POST">
         <input type="text" name="user[name]" class="form-control" placeholder="Name" required autofocus>
