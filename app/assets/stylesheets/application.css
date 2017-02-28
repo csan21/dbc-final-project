@@ -13,7 +13,7 @@
  *= require_tree .
  *= require_self
  */
- @import url(https://fonts.googleapis.com/css?family=Roboto:300);
+ @import url(https://fonts.googleapis.com/css?family=Comfortaa);
 
 .login-page {
   width: 360px;
@@ -79,10 +79,10 @@
 }
 
 body {
-  font-family: "Roboto", sans-serif;
-  height: auto;
-  width: auto;
+  padding-top: 30px;
   background-color: #778899;
+  color: #353542;
+  font-family: 'Comfortaa';
 }
 
 .container {
@@ -93,7 +93,6 @@ body {
  }
 
 .banner {
-  width: 500px;
   margin: 0 auto;
   padding-top: 100px;
 }
@@ -105,4 +104,74 @@ ul {
 img {
   max-width: 100%;
   max-height: 100%;
+}
+
+.navbar {
+  background-color: #353542;
+}
+
+.navbar .container-fluid>.navbar-header {
+  float: left;
+  margin-right: 10px;
+}
+.navbar .navbar-nav {
+  float: left;
+  margin: 5px;
+}
+.nav>li {
+  float: left;
+}
+
+.panel-body {
+  margin-top: -20px;
+}
+
+.bg-primary {
+  color: #353542;
+  background-color: #ffde7c;
+  padding: 10px;
+  border-radius: 15px;
+  margin-top: 20px;
+}
+
+.bg-success {
+  background-color: #f9a9f9;
+  padding: 10px;
+  border-radius: 15px;
+}
+
+.list-group-item-current {
+  background-color: #ffddff;
+}
+
+.bg-info {
+  background-color: #f74fb4;
+  padding: 10px;
+  border-radius: 15px;
+}
+
+.list-group-item-recent {
+  background: #f9cce7;
+}
+
+.bg-danger {
+  background-color: #ed685e;
+  padding: 10px;
+  border-radius: 15px;
+}
+
+h4 {
+  color: #353542;
+}
+
+.list-group-item {
+  margin-bottom: 5px;
+}
+
+li.active a {
+  color: #353542 !important;
+}
+
+.pull-right {
+  float: right !important;
 }
