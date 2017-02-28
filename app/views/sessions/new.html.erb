@@ -1,4 +1,12 @@
 <div class="login-page">
+  <% if @errors.length > 0 %>
+    <div id="login-errors">
+      <% @errors.each do |error| %>
+        <%= error %>
+      <% end %>
+    </div>
+  <% end %>
+  <br>
   <div class="form">
     <%= form_for :session, url: '/sessions' do |f| %>
       <%= f.text_field :email, placeholder: "email" %><br>

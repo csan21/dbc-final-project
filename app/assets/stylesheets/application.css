@@ -202,3 +202,7 @@ li.active a {
 .btn-danger a:hover {
   text-decoration: none;
 }
+
+#login-errors {
+  color: #353542;
+}
