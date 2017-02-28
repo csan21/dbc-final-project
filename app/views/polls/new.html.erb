@@ -15,3 +15,32 @@
   <input type="submit" value="Submit">
 </form>
 
+<%= form_for(@poll, url: {action: 'create'}, multipart: true) do |f| %>
+
+<div class="field">
+  <%= f.label :question %>
+  <%= f.text_field :question %>
+</div>
+
+<div class="field">
+  <%= f.label :image %>
+  <%= f.file_field :image %>
+</div>
+
+<%= f.fields_for :answers do |answer| %>
+  <div class="field">
+    <%= answer.label :text %>
+    <%= answer.text_field :text %>
+  </div>
+<% end %>
+
+<div class="fields">
+  <%= f.label :expiration %>
+  <%= f.datetime_local_field :expiration %>
+</div>
+
+<div class="field">
+  <%= f.submit "Squad Up" %>
+</div>
+
+<% end %>
