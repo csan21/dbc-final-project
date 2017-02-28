@@ -13,6 +13,7 @@ class User < ApplicationRecord
   has_many :squad_member_users, through: :squad_members, source: :accepter
 
   validates_presence_of :name, :email, :phone_number, :password, :password_confirmation
+  validates_uniqueness_of :email, :phone_number
 
   before_create do
     self.invite_code = SecureRandom.hex(4);

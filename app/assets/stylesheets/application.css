@@ -219,4 +219,8 @@ li.active a {
   font-size: 1em;
 }
 
+#new-user-error-list {
+  margin-top: 20px;
+}
+
 
