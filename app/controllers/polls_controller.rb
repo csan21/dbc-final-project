@@ -11,17 +11,16 @@ class PollsController < ApplicationController
   end
 
   def new
+    # Create poll with 2 answer options
     @poll = Poll.new
+    @poll.answers.build({text: 'Yes'})
+    @poll.answers.build({text: 'No'})
   end
 
   def create
-    @poll = Poll.create(
-      question: params["question"],
-      expiration: Time.now + params["expiration"].to_i,
-      creator_id: session[:user_id]
-    )
-    Answer.create(text: params["answer1"], poll_id: @poll.id)
-    Answer.create(text: params["answer2"], poll_id: @poll.id)
+    pp = poll_params
+    pp['expiration'] = Time.now + pp['expiration'].to_i
+    @poll = current_user.created_polls.new(pp)
 
     current_user.friends_who_have_accepted.each do |friend|
       if friend.phone_number == "+13093379871"
@@ -29,7 +28,16 @@ class PollsController < ApplicationController
       end
     end
 
-    redirect_to "/users/#{current_user.id}"
+    # Hack to tie answers to poll
+    @poll.answers.each do |a|
+      a.poll = @poll
+    end
+
+    if @poll.save
+      redirect_to "/users/#{current_user.id}/polls/#{@poll.id}"
+    else
+      render action: 'new'
+    end
   end
 
   def edit
@@ -44,5 +52,9 @@ class PollsController < ApplicationController
     @poll.update_attribute(:comment, params["comment"])
 
     redirect_to "/users/#{current_user.id}"
+  end
+
+  def poll_params
+    params.require(:poll).permit(:question, :expiration, :image, answers_attributes: [:text])
   end
 end
