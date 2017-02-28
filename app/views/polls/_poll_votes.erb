@@ -7,4 +7,4 @@
 <% end %>
 <br>
 
-<%= pie_chart Answer.group(:poll_id).count %>
+<%= pie_chart poll.answers.group(:text).count %>
