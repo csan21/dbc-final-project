@@ -4,6 +4,9 @@ class PollsController < ApplicationController
 
   def show
     @poll = Poll.find(params[:id])
+    if request.xhr?
+      render partial: 'polls/poll_votes', layout: false, locals: {poll: @poll}
+    end
   end
 
   def new
@@ -19,7 +22,13 @@ class PollsController < ApplicationController
     Answer.create(text: params["answer1"], poll_id: @poll.id)
     Answer.create(text: params["answer2"], poll_id: @poll.id)
 
-    redirect_to "/users/#{session[:user_id]}"
+    current_user.friends_who_have_accepted.each do |friend|
+      if friend.phone_number == "+13093379871"
+        solicit_vote(friend.phone_number, @poll)
+      end
+    end
+
+    redirect_to "/users/#{current_user.id}"
   end
 
   def edit
@@ -33,6 +42,6 @@ class PollsController < ApplicationController
     @poll.update_attribute(:active?, false)
     @poll.update_attribute(:comment, params["comment"])
 
-    redirect_to "/users/#{session[:user_id]}"
+    redirect_to "/users/#{current_user.id}"
   end
 end

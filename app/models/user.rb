@@ -1,6 +1,7 @@
 class User < ApplicationRecord
   attr_accessor :remember_token, :reset_token
   before_save   :downcase_email
+  before_save   :add_plus_to_phone_number
   before_create :generate_access_token
 
   has_many :created_polls, class_name: :Poll, foreign_key: :creator_id
@@ -33,7 +34,7 @@ class User < ApplicationRecord
 
   def polls_to_answer
     polls_to_answer = []
-    self.squad_membership_users.each do |user|
+    squad_membership_users.each do |user|
       user.created_polls.each do |poll|
         if poll.current?
           polls_to_answer << poll
@@ -86,6 +87,12 @@ class User < ApplicationRecord
     # Converts email to all lower-case.
     def downcase_email
       self.email = email.downcase
+    end
+
+    def add_plus_to_phone_number
+      if phone_number[0] != "+"
+        self.phone_number = "+" + phone_number
+      end
     end
 
     def generate_access_token

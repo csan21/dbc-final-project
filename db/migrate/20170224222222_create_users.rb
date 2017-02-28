@@ -5,7 +5,7 @@ class CreateUsers < ActiveRecord::Migration[5.0]
       t.string :password_digest, null: false
       t.string :name
       t.string :invite_code
-      t.string :phone_number
+      t.string :phone_number, null: false
       t.timestamps null: false
       t.string   :remember_digest
       t.string   :access_token, index: true, unique: true
