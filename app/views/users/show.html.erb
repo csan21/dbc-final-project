@@ -1,15 +1,18 @@
 <h1><%= @user.name %></h1>
 
-  <div class="container">
-  <% if @user.incoming_friend_requests %>
+<div class="container friend-requests">
+  <% if @user.incoming_friend_requests.length > 0 %>
+    <u>friend requests</u><br><br>
     <% @user.incoming_friend_requests.each do |pending_friend| %>
-      <%= pending_friend.adder.name %> - <span class="label label-success"><%= link_to "ACCEPT", user_friendship_path(user_id: @user.id, id: pending_friend.id), method: :put %></span> or <span class="label label-danger"><%= link_to "REJECT", user_friendship_path(user_id: @user.id, id: pending_friend.id), method: :delete %></span><br>
+      <strong><%= pending_friend.adder.name %></strong><br>
+      <button type="button" class="btn btn-success"><%= link_to "accept", user_friendship_path(user_id: @user.id, id: pending_friend.id), method: :put %> </button> <button type="button" class="btn btn-danger"> <%= link_to "reject", user_friendship_path(user_id: @user.id, id: pending_friend.id), method: :delete %>
+      </button><br><br>
     <% end %>
   <% end %>
 </div>
 
 
-  <h4 class="bg-primary">Polls to vote on</h4>
+  <h4 class="bg-primary">polls to vote on</h4>
 
   <div class="panel-body need">
     <% @user.polls_to_answer.each do |poll| %>
@@ -18,7 +21,7 @@
   </div>
 
 
-  <h4 class="bg-success">My current polls</h4>
+  <h4 class="bg-success">my current polls</h4>
 
   <div class="panel-body current">
     <% @user.sorted_created_current_polls.each do |poll| %>
@@ -26,7 +29,7 @@
     <% end %>
   </div>
 
-  <h4 class="bg-info">Recent votes</h4>
+  <h4 class="bg-info">recent votes</h4>
 
   <div class="panel-body recent">
     <% @user.recent_taken_polls.each do |poll| %>
@@ -34,7 +37,7 @@
     <% end %>
   </div>
 
-  <h4 class="bg-danger">My archive</h4>
+  <h4 class="bg-danger">my archive</h4>
 
   <div class="panel-body archived">
     <% @user.sorted_created_old_polls.each do |poll| %>
