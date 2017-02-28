@@ -13,11 +13,14 @@ class PollsController < ApplicationController
   def new
     # Create poll with 2 answer options
     @poll = Poll.new
-    2.times { @poll.answers.build }
+    @poll.answers.build({text: 'Yes'})
+    @poll.answers.build({text: 'No'})
   end
 
   def create
-    @poll = current_user.created_polls.new(poll_params)
+    pp = poll_params
+    pp['expiration'] = Time.now + pp['expiration'].to_i
+    @poll = current_user.created_polls.new(pp)
 
     current_user.friends_who_have_accepted.each do |friend|
       if friend.phone_number == "+13093379871"

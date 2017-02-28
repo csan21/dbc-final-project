@@ -1,46 +1,41 @@
-<h2>Post a new poll</h2>
+<div class="row">
+  <div class="col-sm-8 col-sm-offset-2 col-md-4 col-md-offset-4">
 
+  <%= form_for(@poll, url: {action: 'create'}, multipart: true, class: "text-center") do |f| %>
+    <div class="form-group">
+      <%= f.label :question, "Post a poll!" %>
+      <%= f.text_area :question, class: "form-control", placeholder: "Should I buy this boat?"%>
+    </div>
 
-<form method="post" action="/users/<%= session[:user_id] %>/polls">
-  <textarea name="question" rows="4" cols="50" placeholder="Type your question"></textarea><br>
-  Answer:<br>
-  <input type="text" name="answer1" value="yes">
-  <br>
-  Other answer:<br>
-  <input type="text" name="answer2" value="no">
-  <br><br>
-  <input type="radio" name="expiration" value="600">Ten minutes
-  <input type="radio" name="expiration" value="3600">One hour
-  <input type="radio" name="expiration" value="86400">One day<br><br>
-  <input type="submit" value="Submit">
-</form>
+    <div class="form-group">
+      <%= f.label :image, "Add an image" %>
+      <%= f.file_field :image %>
+    </div>
 
-<%= form_for(@poll, url: {action: 'create'}, multipart: true) do |f| %>
+    <%= f.fields_for :answers do |answer| %>
+      <div class="form-group">
+        <%= answer.label :text, "Option" %>
+        <%= answer.text_field :text, class: "form-control" %>
+      </div>
+    <% end %>
 
-<div class="field">
-  <%= f.label :question %>
-  <%= f.text_field :question %>
-</div>
+    <div class="form-group center-block">
+      <div class="btn-group" data-toggle="buttons">
+          <%= f.label :expiration, class: "btn btn-primary active" do  %>
+            10 Minutes
+            <%= f.radio_button :expiration, 600, checked: true, autocomplete: "off", type: "button", class: "" %>
+          <% end %>
+          <%= f.label :expiration, class: "btn btn-primary" do  %>
+            1 Hour
+            <%= f.radio_button :expiration, 3600, autocomplete: "off" %>
+          <% end %>
+      </div>
+    </div>
+    <div class="form-group">
+        <%= f.button "Squad Up", class: "btn btn-default btn-success btn-lg" %>
+    </div>
 
-<div class="field">
-  <%= f.label :image %>
-  <%= f.file_field :image %>
-</div>
+  <% end %>
 
-<%= f.fields_for :answers do |answer| %>
-  <div class="field">
-    <%= answer.label :text %>
-    <%= answer.text_field :text %>
   </div>
-<% end %>
-
-<div class="fields">
-  <%= f.label :expiration %>
-  <%= f.datetime_local_field :expiration %>
-</div>
-
-<div class="field">
-  <%= f.submit "Squad Up" %>
-</div>
-
-<% end %>
+</di>
