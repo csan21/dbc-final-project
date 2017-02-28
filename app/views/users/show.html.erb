@@ -31,7 +31,7 @@
 
   <div class="panel-body">
     <% @user.recent_taken_polls.each do |poll| %>
-      <li class="list-group-item list-group-item-success"<%= link_to poll.question, user_poll_path(user_id: poll.creator_id, id: poll.id) %></li>
+      <li class="list-group-item list-group-item-success"><%= link_to poll.question, user_poll_path(user_id: poll.creator_id, id: poll.id) %></li>
     <% end %>
   </div>
 
