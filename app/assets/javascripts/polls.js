@@ -5,6 +5,7 @@ $(document).ready(function() {
      url: window.location.pathname
     })
     .done(function(response){
+      console.log(response);
       $('#poll-votes').html(response)
     });
    },
