@@ -3,6 +3,7 @@
     <%= form_for :user, url: '/users' do |f| %>
       <%= f.text_field :name, placeholder: "name" %><br>
       <%= f.text_field :email, placeholder: "email" %><br>
+      <%= f.text_field :phone_number, placeholder: "phone number" %><br>
       <%= f.password_field :password, placeholder: "password" %><br>
       <%= f.password_field :password_confirmation, placeholder: "confirm password" %><br>
       <%= f.submit "REGISTER", class: "button" %>
