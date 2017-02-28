@@ -9,7 +9,7 @@
 
     <div class="form-group">
       <%= f.label :image, "Add an image" %>
-      <%= f.file_field :image %>
+      <%= f.file_field :image, {accept: "image/*", capture: "camera"} %>
     </div>
 
     <%= f.fields_for :answers do |answer| %>
