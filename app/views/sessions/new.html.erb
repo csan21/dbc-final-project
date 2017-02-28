@@ -1,18 +1,15 @@
-<div class="login-page">
-  <% if @errors.length > 0 %>
-    <div id="login-errors">
-      <% @errors.each do |error| %>
-        <%= error %>
-      <% end %>
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+      <div class="account-wall">
+        <p class="sign-in">login</p>
+        <form class="form-signin" action="/sessions" method="POST">
+        <input type="text" name="session[email]" class="form-control" placeholder="Email" required autofocus>
+        <input type="password" name="session[password]" class="form-control" placeholder="Password" required>
+        <button class="btn btn-md btn-danger btn-block" type="submit"> sign in</button><br>
+        <p class="message">Not on Squad?<a href="/users/new"> Sign up</a></p><span class="clearfix"></span>
+        </form>
+      </div>
     </div>
-  <% end %>
-  <br>
-  <div class="form">
-    <%= form_for :session, url: '/sessions' do |f| %>
-      <%= f.text_field :email, placeholder: "email" %><br>
-      <%= f.password_field :password, placeholder: "password" %><br>
-      <%= f.submit "LOGIN", class: "button" %>
-    <% end %>
-    <p class="message">Not on Squad?<a href="/users/new"> Sign up</a></p>
   </div>
 </div>

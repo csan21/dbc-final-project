@@ -3,7 +3,7 @@
   <div class="container-fluid">
     <ul class="nav navbar-nav">
       <li><%= link_to "Register", new_user_path %></li>
-      <li><%= link_to "Login", new_session_path %></li>
+      <li class="pull-right"><%= link_to "Login", new_session_path %></li>
     </ul>
   </div>
 </nav>
@@ -11,11 +11,20 @@
 <nav class="navbar navbar-inverse navbar-fixed-top">
   <div class="container-fluid">
     <ul class="nav navbar-nav">
-      <li><%= link_to "Dashboard", user_path(current_user.id) %></li>
-      <li><%= link_to "Squad", user_friendships_path(current_user.id) %></li>
-      <li><%= link_to "Add", new_user_friendship_path(current_user.id) %></li>
-      <li><%= link_to "Create", new_user_poll_path(current_user.id) %></li>
-      <li><%= link_to "Logout", session_path(session), method: :delete %></li>
+      <li>
+        <div class="dropdown">
+          <button class="btn btn-default dropdown-toggle" type="button" id="dLabel" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <span class="glyphicon glyphicon-align-center"></span>
+          </button>
+          <ul class="dropdown-menu" aria-labelledby="dLabel">
+            <li><%= link_to "Dashboard", user_path(current_user.id) %></li>
+            <li><%= link_to "My Squad", user_friendships_path(current_user.id) %></li>
+            <li><%= link_to "Add Friend", new_user_friendship_path(current_user.id) %></li>
+            <li><%= link_to "Create", new_user_poll_path(current_user.id) %></li>
+          </ul>
+        </div>
+      </li>
+      <li class="pull-right"><%= link_to "Logout", session_path(session), method: :delete %></li>
     </ul>
   </div>
 </nav>
