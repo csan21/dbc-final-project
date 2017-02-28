@@ -1,4 +1,13 @@
 <div class="col-md-12">
+  <% if @user.errors.messages.length > 0 %>
+    <ul id="new-user-error-list">
+    <% @user.errors.messages.each do |error| %>
+      <li id="new-user-error">
+        <%= "#{error[0]}"+" "+"#{error[1][0]}" %>
+      </li>
+    <% end %>
+    </ul>
+  <% end %>
   <div class="form-group">
     <%= form_for :user, url: '/users' do |f| %>
       <%= f.text_field :name, placeholder: "name" %><br>
