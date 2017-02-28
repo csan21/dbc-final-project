@@ -1,10 +1,16 @@
+<% chart_array = [] %>
+
 <% poll.answers.each do |answer| %>
+  <% answer_array = [] %>
+  <% answer_array.push(answer.text) %>
+  <% answer_array.push(answer.votes.count) %>
   <%= answer.text %> - <%= answer.votes.count %> votes
   <% if poll.votes.count > 0 %>
     (<%= ((answer.votes.count.to_f / poll.votes.count)*100).floor %>%)
   <% end %>
+  <% chart_array << answer_array %>
   <br>
 <% end %>
 <br>
 
-<%= pie_chart poll.answers.group(:text).count %>
+<%= pie_chart chart_array %>
