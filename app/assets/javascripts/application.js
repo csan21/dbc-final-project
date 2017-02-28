@@ -15,10 +15,3 @@
 //= require turbolinks
 //= require Chart.bundle
 //= require chartkick
-
-
-$(document).ready(function() {
-  console.log("hello");
-});
-
-

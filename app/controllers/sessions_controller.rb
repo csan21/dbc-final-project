@@ -2,6 +2,9 @@ class SessionsController < ApplicationController
   include UsersHelper
 
   def new
+    if current_user
+      redirect_to "/users/#{current_user.id}"
+    end
   end
 
   def create
