@@ -5,34 +5,43 @@
 
   <% if @user.incoming_friend_requests %>
     <% @user.incoming_friend_requests.each do |pending_friend| %>
-      <%= pending_friend.adder.name %> - <%= link_to "ACCEPT", user_friendship_path(user_id: @user.id, id: pending_friend.id), method: :put %> or <%= link_to "REJECT", user_friendship_path(user_id: @user.id, id: pending_friend.id), method: :delete %><br>
+      <%= pending_friend.adder.name %> - <span class="label label-success"><%= link_to "ACCEPT", user_friendship_path(user_id: @user.id, id: pending_friend.id), method: :put %></span> or <span class="label label-danger"><%= link_to "REJECT", user_friendship_path(user_id: @user.id, id: pending_friend.id), method: :delete %></span><br>
     <% end %>
   <% end %>
 
 
-  <h2>These polls need your vote</h2>
+  <h4>These polls need your vote</h4>
 
+  <div class="panel-body">
     <% @user.polls_to_answer.each do |poll| %>
-      <%= link_to poll.question, user_poll_path(user_id: poll.creator_id, id: poll.id) %><br>
+      <li class="list-group-item list-group-item-info"><%= link_to poll.question, user_poll_path(user_id: poll.creator_id, id: poll.id) %></li>
     <% end %>
+  </div>
 
-  <h2>My current polls</h2>
 
+  <h4>My current polls</h4>
+
+  <div class="panel-body">
     <% @user.sorted_created_current_polls.each do |poll| %>
-      <%= link_to poll.question, user_poll_path(user_id: poll.creator_id, id: poll.id) %><br>
+      <li class="list-group-item list-group-item-warning"><%= link_to poll.question, user_poll_path(user_id: poll.creator_id, id: poll.id) %></li>
     <% end %>
+  </div>
 
-  <h2>Recent polls you've voted in</h2>
+  <h4>Recent polls you've voted in</h4>
 
+  <div class="panel-body">
     <% @user.recent_taken_polls.each do |poll| %>
-      <%= link_to poll.question, user_poll_path(user_id: poll.creator_id, id: poll.id) %><br>
+      <li class="list-group-item list-group-item-success"<%= link_to poll.question, user_poll_path(user_id: poll.creator_id, id: poll.id) %></li>
     <% end %>
+  </div>
 
-  <h2>Your old shit</h2>
+  <h4>Archived</h4>
 
+  <div class="panel-body">
     <% @user.sorted_created_old_polls.each do |poll| %>
       <%= link_to poll.question, user_poll_path(user_id: poll.creator_id, id: poll.id) %><br>
     <% end %>
+  </div>
 
 
 
