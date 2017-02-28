@@ -4,7 +4,7 @@ class PollsController < ApplicationController
 
   def show
     @poll = Poll.find(params[:id])
-    
+
     if request.xhr?
       render partial: 'polls/poll_votes', layout: false, locals: {poll: @poll}
     end
