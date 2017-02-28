@@ -14,7 +14,7 @@ Rails.application.routes.draw do
 
   resources :answers
   resources :votes, only: [:create]
-  resources :sessions, only: [:new, :create, :destroy]
+  resources :sessions, only: [:new, :create, :destroy, :index]
 
   namespace :api do
     post   'login'   => 'sessions#create'

@@ -227,3 +227,19 @@ li.active a {
 .dropdown {
   margin-top: 5px;
 }
+
+#login-errors {
+  color: #353542;
+}
+
+#new_poll {
+  margin-top: 40px;
+}
+
+#new_poll label {
+  font-size: 1.5em;
+}
+
+#new_poll label.btn {
+  font-size: 1em;
+}
