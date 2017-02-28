@@ -24,9 +24,14 @@
       <%= render partial: 'polls/poll_votes', layout: false, locals: {poll: @poll} %>
     </div>
   <% else %>
-    <% @poll.answers.each do |answer| %>
-      <%= button_to answer.text, votes_path(answer_id: answer.id) %><br>
-    <% end %>
+  <div id="poll-votes-swipe">
+    <div id="poll-answer-left">
+      <%= button_to @poll.answers[0].text, votes_path(answer_id: @poll.answers[0].id) %>
+    </div>
+    <div id="poll-answer-right">
+      <%= button_to @poll.answers[1].text, votes_path(answer_id: @poll.answers[1].id) %>
+    </div>
+  </div>
   <% end %>
 
 <% end %>
