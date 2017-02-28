@@ -203,6 +203,10 @@ li.active a {
   text-decoration: none;
 }
 
+#login-errors {
+  color: #353542;
+}
+
 #new_poll {
   margin-top: 40px;
 }
@@ -214,4 +218,5 @@ li.active a {
 #new_poll label.btn {
   font-size: 1em;
 }
+
 
