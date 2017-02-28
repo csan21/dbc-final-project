@@ -18,11 +18,14 @@
 <% else %>
 
   <% if @poll.votes.where(user_id: session[:user_id]).length > 0 && @poll.current? %>
-    Thanks for voting! Results coming soon!
-  <% elsif @poll.votes.where(user_id: session[:user_id]).length > 0 %>
+    Thanks for voting!<br><br>
     <div id="poll-votes">
-      <%= render partial: 'polls/poll_votes', layout: false, locals: {poll: @poll} %>
+    <%= render partial: 'polls/poll_votes', layout: false, locals: {poll: @poll} %>
     </div>
+  <% elsif @poll.votes.where(user_id: session[:user_id]).length > 0 %>
+  <div id="poll-votes">
+    <%= render partial: 'polls/poll_votes', layout: false, locals: {poll: @poll} %>
+  </div>
   <% else %>
   <div id="poll-votes-swipe">
     <div id="poll-answer-left">

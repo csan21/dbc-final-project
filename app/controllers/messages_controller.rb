@@ -8,7 +8,11 @@ class MessagesController < ApplicationController
 
     if message_body[0] == "accept"
       friendship = Friendship.find_by(id: message_body[1].to_i)
+      p "**************"
+      p friendship
       friendship.update_attribute(:accepted?, true)
+      p "******updated friendship"
+      p friendship
       body = "Thanks for accepting this friend request!"
     elsif message_body[0] == "vote"
       user = User.find_by(phone_number: params["From"])
