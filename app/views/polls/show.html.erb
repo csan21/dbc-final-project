@@ -1,7 +1,11 @@
-<h2><%= @poll.question %></h2>
-<h3>by <%= @poll.creator.name %></h3>
+<h3><%= @poll.creator.name %> asks:</h3>
+<h3><%= @poll.question %></h3>
 
-<div id="poll-container"
+<% if @poll.comment %>
+  Comment: <%= @poll.comment %><br><br>
+<% end %>
+
+<div id="container"
   <% if @poll.current? %>
     <i>Poll expires <%= @poll.sexy_expiration %></i><br><br>
   <% end %>
@@ -36,11 +40,5 @@
     </div>
   </div>
   <% end %>
-
 <% end %>
 </div>
-
-<% if @poll.comment %>
-  Comment: <%= @poll.comment %>
-<% end %>
-

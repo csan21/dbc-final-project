@@ -228,6 +228,10 @@ li.active a {
   margin-top: 5px;
 }
 
+.dropdown a:visited {
+  text-decoration: none;
+}
+
 #login-errors {
   color: #353542;
 }
