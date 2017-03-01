@@ -228,12 +228,16 @@ li.active a {
   margin-top: 5px;
 }
 
+.dropdown a:visited {
+  text-decoration: none;
+}
+
 #login-errors {
   color: #353542;
 }
 
 #new_poll {
-  margin-top: 40px;
+  margin-top: 20px;
 }
 
 #new_poll label {
@@ -248,3 +252,6 @@ li.active a {
   margin-top: 20px;
 }
 
+#alert-box {
+  margin-top: 20px;
+}

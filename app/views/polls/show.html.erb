@@ -1,11 +1,13 @@
-<h2><%= @poll.question %></h2>
-<h3>by <%= @poll.creator.name %></h3>
+<h3><%= @poll.creator.name %> asks:</h3>
+<h3><%= @poll.question %></h3>
 
+<% if @poll.comment %>
+  Comment: <%= @poll.comment %><br><br>
+<% end %>
 
-
-<div id="poll-container">
+<div id="container"
   <% if @poll.current? %>
-    <p><i><%= @time_left %> left to vote</i></i><br><br>
+    <p><i><%= @time_left %> left to vote</i><br><br>
   <% end %>
 
 <% if @poll.creator_id == session[:user_id] %>
@@ -38,11 +40,5 @@
     </div>
   </div>
   <% end %>
-
 <% end %>
 </div>
-
-<% if @poll.comment %>
-  Comment: <%= @poll.comment %>
-<% end %>
-

@@ -11,6 +11,8 @@ class Poll < ApplicationRecord
 
   validates_attachment_content_type :image, :content_type => ["image/jpg", "image/jpeg", "image/png", "image/gif"]
 
+  validates :question, presence: true
+
   def current?
     self.expiration > Time.now && self.active? == true
   end
