@@ -10,6 +10,10 @@ class PollsController < ApplicationController
     end
   end
 
+  def index
+    redirect_to new_user_poll_path
+  end
+
   def new
     # Create poll with 2 answer options
     @poll = Poll.new
@@ -36,7 +40,7 @@ class PollsController < ApplicationController
     if @poll.save
       redirect_to "/users/#{current_user.id}/polls/#{@poll.id}"
     else
-      render action: 'new'
+      render :new
     end
   end
 
