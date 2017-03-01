@@ -10,7 +10,7 @@ $(document).ready(function() {
         $('#poll-votes').html(response)
       });
     },
-    1000  /* 10000 ms = 10 sec */
+    10000  /* 10000 ms = 10 sec */
     );
 
     $("#new_poll btn").on('click', function(event){
