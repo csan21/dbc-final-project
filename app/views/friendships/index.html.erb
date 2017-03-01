@@ -1,7 +1,13 @@
 <h1>Your Squad</h1>
 
+<% if @errors.length > 0 %>
+  <% @errors.each do |error| %>
+    <p><%= error %></p>
+  <% end %>
+<% end %>
+
 
 <% @friends.each do |friend| %>
-  <%= friend.name %><br>
+  <%=friend.name%><%= friend.phone_number %><br>
 <% end %>
 

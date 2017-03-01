@@ -10,6 +10,9 @@ module MessagesHelper
   end
 
   def solicit_vote(number, poll)
+    p "****************"
+    p poll.answers
+    p "*****************"
     boot_twilio
     sms = @client.messages.create(
       from: Rails.application.secrets.twilio_number,
