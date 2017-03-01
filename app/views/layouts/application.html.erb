@@ -20,7 +20,12 @@
       </div>
     </div>
     <div class="container">
-    <%= yield %>
+      <div class="col-sm-6 col-sm-offset-3">
+        <%= yield :form_errors %>
+      </div>
+      <div class="col-xs-12">
+      <%= yield %>
+      </div>
     </div>
   </body>
 </html>
