@@ -27,11 +27,7 @@ class PollsController < ApplicationController
     pp['expiration'] = Time.now + pp['expiration'].to_i
     @poll = current_user.created_polls.new(pp)
 
-    current_user.friends_who_have_accepted.each do |friend|
-      if friend.phone_number == "+13093379871"
-        solicit_vote(friend.phone_number, @poll)
-      end
-    end
+
 
     # Hack to tie answers to poll
     @poll.answers.each do |a|
@@ -39,6 +35,11 @@ class PollsController < ApplicationController
     end
 
     if @poll.save
+
+      current_user.friends_who_have_accepted.each do |friend|
+        solicit_vote(friend.phone_number, @poll)
+      end
+
       redirect_to "/users/#{current_user.id}/polls/#{@poll.id}"
     else
       render :new

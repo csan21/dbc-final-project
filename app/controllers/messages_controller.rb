@@ -6,18 +6,22 @@ class MessagesController < ApplicationController
     from_number = params["From"]
     boot_twilio
 
-    if message_body[0] == "accept"
+    if message_body[0].downcase == "accept"
       friendship = Friendship.find_by(id: message_body[1].to_i)
-      p "**************"
-      p friendship
       friendship.update_attribute(:accepted?, true)
-      p "******updated friendship"
-      p friendship
       body = "Thanks for accepting this friend request!"
-    elsif message_body[0] == "vote"
-      user = User.find_by(phone_number: params["From"])
-      Vote.create(user_id: user.id, answer_id: message_body[1].to_i)
-      body = "Thanks for voting in this poll!"
+    elsif message_body[0].downcase == "vote"
+      @user = User.find_by(phone_number: params["From"])
+      @vote = Vote.new(user_id: user.id, answer_id: message_body[1].to_i)
+      if @vote.save && @user
+        body = "Thanks for voting in this poll!"
+      elsif @user
+        body = "Sorry. You've already voted."
+      else
+        body = "You need to Squad Up"
+      end
+    else
+      body = "I don't quite understand..."
     end
 
     sms = @client.messages.create(

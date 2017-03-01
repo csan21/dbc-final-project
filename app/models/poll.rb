@@ -3,8 +3,6 @@ class Poll < ApplicationRecord
   has_many :votes, through: :answers
   belongs_to :creator, class_name: :User
 
-  belongs_to :creator, class_name: :User
-
   accepts_nested_attributes_for :answers
 
   has_attached_file :image, styles: {medium: '300'}
