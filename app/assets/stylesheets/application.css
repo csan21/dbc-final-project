@@ -254,7 +254,7 @@ li.active a {
 .create-poll {
   background-color: #353542;
   color: grey;
-  border-radius: 15px;
+  border-radius: 5px;
 }
 
 .form-group {
@@ -265,4 +265,44 @@ li.active a {
 .add-image {
   margin-top: 5px;
   margin-bottom: 5px;
+}
+
+.question-box {
+  margin-bottom: 10px;
+}
+
+.poll-container {
+  padding-top: 10px;
+  padding-bottom: 30px;
+  background-color: #353542;
+  color: grey;
+  border-radius: 5px;
+}
+
+.poll-timer {
+  font-size: 12px;
+}
+
+#poll-votes-swipe {
+  margin: 0 auto;
+}
+
+#poll-answer-left {
+  display: inline;
+  width: 50%;
+  float: left;
+}
+
+#poll-answer-right {
+  display: inline;
+  width: 50%;
+  float: right;
+}
+
+.yes-button {
+  width: 50%;
+}
+
+.no-button {
+  width: 50%;
 }
