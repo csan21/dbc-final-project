@@ -5,12 +5,15 @@ $(document).ready(function() {
      url: window.location.pathname
     })
     .done(function(response){
-      debugger;
       $('#poll-votes').html(response)
     });
    },
    1000  /* 10000 ms = 10 sec */
   );
+
+  $("#new_poll btn").on('click', function(event){
+    $(this).button('toggle');
+  })
 
   if ($('#poll-votes-swipe').length > 0){
     var myElement = document.getElementById('poll-votes-swipe')

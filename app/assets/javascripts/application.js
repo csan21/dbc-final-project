@@ -11,6 +11,7 @@
 // about supported directives.
 //
 //= require jquery
+//= require dropdown
 //= require jquery_ujs
 //= require turbolinks
 //= require Chart.bundle
