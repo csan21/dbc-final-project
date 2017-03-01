@@ -16,3 +16,7 @@
 //= require turbolinks
 //= require Chart.bundle
 //= require chartkick
+//= require moment
+//= require hammer.min
+//= require countdown.min
+//= require moment-countdown.min

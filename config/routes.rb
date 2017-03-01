@@ -16,6 +16,8 @@ Rails.application.routes.draw do
   resources :votes, only: [:create]
   resources :sessions, only: [:new, :create, :destroy, :index]
 
+  get '/polls/:id/expiration', to: 'polls#expiration'
+
   namespace :api do
     post   'login'   => 'sessions#create'
     delete 'logout'  => 'sessions#destroy'
