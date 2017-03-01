@@ -3,7 +3,7 @@ module MessagesHelper
   def friend_add(number, friendship_id)
     boot_twilio
     sms = @client.messages.create(
-      from: Rails.application.secrets.twilio_number,
+      from: ENV["TWILIO_NUMBER"],
       to: number,
       body: "#{current_user.name} wants to be your friend on Squad! Reply 'accept #{friendship_id}' to accept."
     )
