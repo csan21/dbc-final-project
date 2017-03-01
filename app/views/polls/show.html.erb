@@ -14,7 +14,10 @@
 
 <div id="container" class="poll-page">
   <% if @poll.current? %>
-    <p class="poll-timer"><i><%= @time_left %> left to vote</i></p><br><br>
+    <p class="poll-timer">
+      <span id="poll-timer"></span>
+    </p>
+    <br><br>
   <% end %>
 
 <% if @poll.creator_id == session[:user_id] %>
