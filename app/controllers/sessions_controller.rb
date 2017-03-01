@@ -4,6 +4,9 @@ class SessionsController < ApplicationController
   def new
     @user = User.new
     @errors = []
+    if current_user
+      redirect_to "/users/#{current_user.id}"
+    end
   end
 
   def index

@@ -5,7 +5,6 @@ $(document).ready(function() {
      url: window.location.pathname
     })
     .done(function(response){
-      console.log(response);
       $('#poll-votes').html(response)
     });
    },
@@ -16,9 +15,9 @@ $(document).ready(function() {
     $(this).button('toggle');
   })
 
-  if ($('#poll-votes-swipe').length > 0){ 
+  if ($('#poll-votes-swipe').length > 0){
     var myElement = document.getElementById('poll-votes-swipe')
-  
+
     var hammertime = new Hammer(myElement);
 
     hammertime.on('swipeleft', function(ev) {
@@ -36,7 +35,7 @@ $(document).ready(function() {
       url: $('#poll-answer-right').find('form').attr('action')
       })
     });
-  }; 
+  };
 });
 
 /*! Hammer.JS - v2.0.8 - 2016-04-23
