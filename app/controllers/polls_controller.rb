@@ -4,6 +4,7 @@ class PollsController < ApplicationController
 
   def show
     @poll = Poll.find(params[:id])
+    @time_left = Time.at(@poll.expiration - Time.now).utc.strftime("%H hours, %M minutes, %S seconds")
 
     if request.xhr?
       render partial: 'polls/poll_votes', layout: false, locals: {poll: @poll}
