@@ -25,7 +25,7 @@ class MessagesController < ApplicationController
     end
 
     sms = @client.messages.create(
-      from: Rails.application.secrets.twilio_number,
+      from: ENV["TWILIO_NUMBER"],
       to: from_number,
       body: body
     )
