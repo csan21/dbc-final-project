@@ -1,6 +1,14 @@
 <div class="container">
   <div class="row">
     <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+      <% if @errors.length > 0 %>
+      <div id="login-errors">
+        <% @errors.each do |error| %>
+          <%= error %>
+        <% end %>
+      </div>
+      <% end %>
+      <br>
       <div class="account-wall">
         <p class="sign-in">login</p>
         <form class="form-signin" action="/sessions" method="POST">

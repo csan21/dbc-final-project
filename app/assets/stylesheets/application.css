@@ -228,6 +228,7 @@ li.active a {
 }
 
 #login-errors {
+  margin-top: 20px;
   color: #353542;
 }
 
