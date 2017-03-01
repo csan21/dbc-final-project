@@ -1,40 +1,43 @@
 $(document).ready(function() {
-  var voteRefresh = setInterval(function(){
-    $.ajax({
-     method: "GET",
-     url: window.location.pathname
+
+  if ($('.poll-page').length){
+    var voteRefresh = setInterval(function(){
+      $.ajax({
+      method: "GET",
+      url: window.location.pathname
+      })
+      .done(function(response){
+        $('#poll-votes').html(response)
+      });
+    },
+    1000  /* 10000 ms = 10 sec */
+    );
+
+    $("#new_poll btn").on('click', function(event){
+      $(this).button('toggle');
     })
-    .done(function(response){
-      $('#poll-votes').html(response)
-    });
-   },
-   1000  /* 10000 ms = 10 sec */
-  );
 
-  $("#new_poll btn").on('click', function(event){
-    $(this).button('toggle');
-  })
+    if ($('#poll-votes-swipe').length > 0){
+      var myElement = document.getElementById('poll-votes-swipe')
 
-  if ($('#poll-votes-swipe').length > 0){
-    var myElement = document.getElementById('poll-votes-swipe')
+      var hammertime = new Hammer(myElement);
 
-    var hammertime = new Hammer(myElement);
+      hammertime.on('swipeleft', function(ev) {
+        console.log('swipeleft');
+        $.ajax({
+          method: "POST",
+          url: $('#poll-answer-left').find('form').attr('action')
+        })
+      });
 
-    hammertime.on('swipeleft', function(ev) {
-      console.log('swipeleft');
+    hammertime.on('swiperight', function(ev) {
+      console.log('swiperight');
       $.ajax({
         method: "POST",
-        url: $('#poll-answer-left').find('form').attr('action')
-      })
-    });
-
-   hammertime.on('swiperight', function(ev) {
-    console.log('swiperight');
-     $.ajax({
-      method: "POST",
-      url: $('#poll-answer-right').find('form').attr('action')
-      })
-    });
+        url: $('#poll-answer-right').find('form').attr('action')
+        })
+      });
+    };
   };
 });
 

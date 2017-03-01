@@ -12,6 +12,7 @@
     <img src="<%= @poll.image.url(:medium) %>">
   <% end %>
 
+<div id="container" class="poll-page">
   <% if @poll.current? %>
     <p class="poll-timer"><i><%= @time_left %> left to vote</i></p><br><br>
   <% end %>
@@ -47,4 +48,5 @@
   </div>
   <% end %>
 <% end %>
+</div>
 </div>
