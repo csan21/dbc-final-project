@@ -11,15 +11,17 @@ class MessagesController < ApplicationController
       friendship.update_attribute(:accepted?, true)
       body = "Thanks for accepting this friend request!"
     elsif message_body[0].downcase == "vote"
-      user = User.find_by(phone_number: params["From"])
+      @user = User.find_by(phone_number: params["From"])
       @vote = Vote.new(user_id: user.id, answer_id: message_body[1].to_i)
-      if @vote.save
+      if @vote.save && @user
         body = "Thanks for voting in this poll!"
-      else
+      elsif @user
         body = "Sorry. You've already voted."
+      else
+        body = "You need to Squad Up"
       end
     else
-      body = "Error response"
+      body = "I don't quite understand..."
     end
 
     sms = @client.messages.create(
