@@ -1,9 +1,11 @@
 <h2><%= @poll.question %></h2>
 <h3>by <%= @poll.creator.name %></h3>
 
-<div id="poll-container"
+
+
+<div id="poll-container">
   <% if @poll.current? %>
-    <i>Poll expires <%= @poll.sexy_expiration %></i><br><br>
+    <p><i><%= @time_left %> left to vote</i></i><br><br>
   <% end %>
 
 <% if @poll.creator_id == session[:user_id] %>
