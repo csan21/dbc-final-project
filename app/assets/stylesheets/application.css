@@ -250,3 +250,19 @@ li.active a {
 #alert-box {
   margin-top: 20px;
 }
+
+.create-poll {
+  background-color: #353542;
+  color: grey;
+  border-radius: 15px;
+}
+
+.form-group {
+  font-size: 12px;
+  margin-top: 10px
+}
+
+.add-image {
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
