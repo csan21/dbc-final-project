@@ -18,7 +18,7 @@ $(document).ready(function() {
         y:  "a year",
         yy: "%d years"
     }
-});    
+});
 
     var voteRefresh = setInterval(function(){
       $.ajax({
@@ -31,7 +31,7 @@ $(document).ready(function() {
 
       updateExpirationTimer(expiresAt);
     },
-    10000  /* 10000 ms = 10 sec */
+    1000  /* 1000 ms = 1 sec */
     );
 
     $("#new_poll btn").on('click', function(event){
