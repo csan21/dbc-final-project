@@ -15,7 +15,7 @@ module MessagesHelper
     p "*****************"
     boot_twilio
     sms = @client.messages.create(
-      from: Rails.application.secrets.twilio_number,
+      from: ENV["TWILIO_NUMBER"],
       to: number,
       body: "#{current_user.name} asked: #{poll.question} Reply 'vote #{poll.answers[0].id}' to vote for #{poll.answers[0].text} or 'vote #{poll.answers[1].id}' to vote for #{poll.answers[1].text}."
     )

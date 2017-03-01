@@ -2,6 +2,9 @@ class MessagesController < ApplicationController
   #protect_from_forgery with: :null_session
 
    def reply
+    p "****************"
+    p "hitting reply route"
+    p "****************"
     message_body = params["Body"].split
     from_number = params["From"]
     boot_twilio
@@ -25,7 +28,7 @@ class MessagesController < ApplicationController
     end
 
     sms = @client.messages.create(
-      from: Rails.application.secrets.twilio_number,
+      from: ENV["TWILIO_NUMBER"],
       to: from_number,
       body: body
     )
