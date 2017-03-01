@@ -60,6 +60,12 @@ class PollsController < ApplicationController
     redirect_to "/users/#{current_user.id}"
   end
 
+  def expiration
+    @poll = Poll.find(params[:id])
+    render json: @poll.expiration.to_json
+  end
+
+
   def poll_params
     params.require(:poll).permit(:question, :expiration, :image, answers_attributes: [:text])
   end
