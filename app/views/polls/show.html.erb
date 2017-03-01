@@ -41,14 +41,26 @@
     <%= render partial: 'polls/poll_votes', layout: false, locals: {poll: @poll} %>
   </div>
   <% else %>
+  <div id="poll-choice">
+      <div class="alert alert-success poll-left">
+        <%= @poll.answers[0].text %>
+      </div>
+      <div class="alert alert-danger poll-right">
+        <%= @poll.answers[1].text %>
+      </div>
+    </div>
+
+
   <div id="poll-votes-swipe">
-    <div id="poll-answer-left">
-      <%= button_to @poll.answers[0].text, votes_path(answer_id: @poll.answers[0].id), :class => 'btn btn-large btn-success yes-button' %>
+      <div id="poll-answer-left">
+        <%= button_to votes_path(answer_id: @poll.answers[0].id), :class=>"btn btn-large btn-block btn-success glyphicon glyphicon-arrow-left yes-arrow", :remote => true do %>
+        <% end %>
+      </div>
+      <div id="poll-answer-right">
+        <%= button_to votes_path(answer_id: @poll.answers[1].id), :class=>"btn btn-large btn-block btn-danger glyphicon glyphicon-arrow-right no-arrow", :remote => true do %>
+        <% end %>
+      </div>
     </div>
-    <div id="poll-answer-right">
-      <%= button_to @poll.answers[1].text, votes_path(answer_id: @poll.answers[1].id), :class => 'btn btn-large btn-danger no-button' %>
-    </div>
-  </div>
   <% end %>
 <% end %>
 </div>

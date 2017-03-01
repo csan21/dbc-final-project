@@ -290,20 +290,42 @@ li.active a {
 
 #poll-answer-left {
   display: inline;
-  width: 50%;
+  width: 45%;
   float: left;
 }
 
 #poll-answer-right {
-  display: inline;
-  width: 50%;
+  display: block;
+  width: 45%;
   float: right;
 }
 
-.yes-button {
-  width: 50%;
+.yes-arrow {
+  width: 100%;
+  padding: 10px;
 }
 
-.no-button {
-  width: 50%;
+.no-arrow {
+  width: 100%;
+  padding: 10px;
+}
+
+#poll-choice {
+  margin: 0 auto;
+}
+
+.poll-left {
+  display: inline;
+  width: 45%;
+  float: left;
+  font-size: 11px;
+  margin-bottom: -2px;
+}
+
+.poll-right {
+  display: inline;
+  width: 45%;
+  float: right;
+  font-size: 11px;
+  margin-bottom: -2px;
 }
