@@ -1,43 +1,45 @@
 <div class="row">
   <div class="col-sm-8 col-sm-offset-2 col-md-4 col-md-offset-4">
+    <div class="container create-poll"
 
+      <%= form_for(@poll, url: {action: 'create'}, multipart: true, class: "text-center") do |f| %>
+        <%= form_errors_for @poll %>
+        <div class="form-group">
+          <%= f.label :question, "post a poll" %>
+          <%= f.text_area :question, class: "form-control", placeholder: "Should I buy this boat?"%>
+        </div>
 
-  <%= form_for(@poll, url: {action: 'create'}, multipart: true, class: "text-center") do |f| %>
-    <%= form_errors_for @poll %>
-    <div class="form-group">
-      <%= f.label :question, "Post a poll!" %>
-      <%= f.text_area :question, class: "form-control", placeholder: "Should I buy this boat?"%>
+        <div class="form-group">
+          <%= f.label :image, "add an image" %>
+          <div class="add-image center-block">
+            <%= f.file_field :image, {accept: "image/*", capture: "camera"} %>
+          </div>
+        </div>
+
+        <%= f.fields_for :answers do |answer| %>
+          <div class="form-group">
+            <%= answer.label :text, "option" %>
+            <%= answer.text_field :text, class: "form-control" %>
+          </div>
+        <% end %>
+
+        <div class="form-group center-block">
+          <div class="btn-group" data-toggle="buttons">
+              <%= f.label :expiration, class: "btn btn-warning active" do  %>
+                10 Minutes
+                <%= f.radio_button :expiration, 600, checked: true, autocomplete: "off", type: "button", class: "" %>
+              <% end %>
+              <%= f.label :expiration, class: "btn btn-warning" do  %>
+                1 Hour
+                <%= f.radio_button :expiration, 3600, autocomplete: "off" %>
+              <% end %>
+          </div>
+        </div>
+        <div class="form-group">
+            <%= f.button "ask my squad", class: "btn btn-default btn-danger btn-lg" %>
+        </div>
+
+      <% end %>
     </div>
-
-    <div class="form-group">
-      <%= f.label :image, "Add an image" %>
-      <%= f.file_field :image, {accept: "image/*", capture: "camera"} %>
-    </div>
-
-    <%= f.fields_for :answers do |answer| %>
-      <div class="form-group">
-        <%= answer.label :text, "Option" %>
-        <%= answer.text_field :text, class: "form-control" %>
-      </div>
-    <% end %>
-
-    <div class="form-group center-block">
-      <div class="btn-group" data-toggle="buttons">
-          <%= f.label :expiration, class: "btn btn-primary active" do  %>
-            10 Minutes
-            <%= f.radio_button :expiration, 600, checked: true, autocomplete: "off", type: "button", class: "" %>
-          <% end %>
-          <%= f.label :expiration, class: "btn btn-primary" do  %>
-            1 Hour
-            <%= f.radio_button :expiration, 3600, autocomplete: "off" %>
-          <% end %>
-      </div>
-    </div>
-    <div class="form-group">
-        <%= f.button "Squad Up", class: "btn btn-default btn-success btn-lg" %>
-    </div>
-
-  <% end %>
-
   </div>
-</di>
+</div>
