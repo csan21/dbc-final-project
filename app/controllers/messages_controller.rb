@@ -2,6 +2,9 @@ class MessagesController < ApplicationController
   #protect_from_forgery with: :null_session
 
    def reply
+    p "****************"
+    p "hitting reply route"
+    p "****************"
     message_body = params["Body"].split
     from_number = params["From"]
     boot_twilio
