@@ -11,6 +11,8 @@ class MessagesController < ApplicationController
       friendship.update_attribute(:accepted?, true)
       body = "Thanks for accepting this friend request!"
     elsif message_body[0].downcase == "vote"
+      p "**********************"
+      p 
       @user = User.find_by(phone_number: params["From"])
       @vote = Vote.new(user_id: user.id, answer_id: message_body[1].to_i)
       if @vote.save && @user
