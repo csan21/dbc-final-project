@@ -48,6 +48,11 @@
   border: 0px;
 }
 
+.form-signin input[type="tel"] {
+  margin-bottom: 10px;
+  border: 0px;
+}
+
 .form-signin input[type="password"]{
    margin-bottom: 10px;
    border: 0px;
