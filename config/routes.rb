@@ -12,7 +12,7 @@ Rails.application.routes.draw do
     resources :friendships
   end
 
-  get 'signup/:invite_code' => 'users#edit'
+  get '/signup/:invite_code' => 'users#edit'
 
   resources :answers
   resources :votes, only: [:create]
