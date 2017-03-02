@@ -4,7 +4,9 @@
   <% answer_array = [] %>
   <% answer_array.push(answer.text) %>
   <% answer_array.push(answer.votes.count) %>
+  <div id="chart-text">
   <%= answer.text %> - <%= answer.votes.count %> votes
+  </div>
   <% if poll.votes.count > 0 %>
     (<%= ((answer.votes.count.to_f / poll.votes.count)*100).floor %>%)
   <% end %>
@@ -12,5 +14,4 @@
   <br>
 <% end %>
 <br>
-
 <%= pie_chart chart_array, colors: ["#FCC106", "#FF0099"], height: '250px'%>

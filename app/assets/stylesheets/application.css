@@ -287,8 +287,17 @@ li.active a {
   border-radius: 5px;
 }
 
+.poll-page {
+  margin-top: 10px;
+}
+
 .poll-timer {
-  font-size: 12px;
+  font-size: 16px;
+  color: #ffde7c;
+}
+
+#chart-text {
+  color: #ffde7c;
 }
 
 #poll-votes-swipe {
