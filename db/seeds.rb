@@ -29,7 +29,7 @@ answers = [
   { text: "yes", poll_id: polls_array[3] } ,
   { text: "no", poll_id: polls_array[3] },
   { text: "pizza", poll_id: polls_array[0] },
-  { text: "a pile of lettuce", poll_id: polls_array[0] }
+  { text: "lettuce", poll_id: polls_array[0] }
 ]
 
 Answer.create!(answers)
