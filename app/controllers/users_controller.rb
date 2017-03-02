@@ -26,6 +26,23 @@ class UsersController < ApplicationController
     end
   end
 
+  def edit
+    @user = User.find_by(invite_code: params[:invite_code])
+    if !@user
+      render :file => "#{Rails.root}/public/404.html", :status => 404
+    end
+  end
+
+  def update
+    @user = User.find_by(id: params[:id])
+    if @user.update_attributes(user_params)
+      set_session(@user)
+      redirect_to @user
+    else
+      render :edit
+    end
+  end
+
   private
 
   def user_params

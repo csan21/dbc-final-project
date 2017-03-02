@@ -31,11 +31,6 @@ class FriendshipsController < ApplicationController
     else
       @user = User.create(name: params["name"], email: SecureRandom.hex(4) + "@random.com", password: "password", password_confirmation: "password", phone_number: params["phone"])
       @friendship = Friendship.create(adder_id: current_user.id, accepter_id: @user.id)
-      p "**********"
-      p @user
-      p current_user
-      p @friendship
-      p "**********"
       friend_add(params["phone"], @friendship.id)
       redirect_to "/users/#{current_user.id}/friendships"
     end

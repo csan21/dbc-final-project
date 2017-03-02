@@ -7,10 +7,12 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :users do
+  resources :users, except: [:edit] do
     resources :polls
     resources :friendships
   end
+
+  get 'signup/:invite_code' => 'users#edit'
 
   resources :answers
   resources :votes, only: [:create]
