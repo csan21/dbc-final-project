@@ -1,0 +1,26 @@
+<h4 class="bg-primary">Team Squad asks:</h4>
+  <div class="alert alert-warning question-box" role="alert">
+    Is this the best presentation on a social polling app you've ever seen?
+  </div>
+
+<div class="container poll-container">
+
+  <img src="">
+
+<div id="container" class="poll-page">
+
+  <div id="poll-votes">
+    <% chart_array = [] %>
+
+      <% yes_array = ["yes", @audience_votes.where(yes?: true).length] %>
+      <% no_array = ["no", @audience_votes.where(yes?: false).length] %>
+      <% chart_array = [yes_array, no_array] %>
+      <br>
+    <br>
+
+  <%= pie_chart chart_array %>
+  </div>
+
+</div>
+</div>
+
