@@ -43,6 +43,10 @@ class UsersController < ApplicationController
     end
   end
 
+  def polls_to_answer
+    user = User.find(params[:id])
+    render :partial => 'user_polls_to_vote_on', :layout => false, :locals => {user: user}
+
   private
 
   def user_params

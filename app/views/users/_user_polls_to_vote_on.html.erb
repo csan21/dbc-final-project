@@ -1,0 +1,5 @@
+<% user.polls_to_answer.each do |poll| %>
+  <li class="list-group-item list-group-item-warning">
+    <%= link_to poll.question, user_poll_path(user_id: poll.creator_id, id: poll.id) %>
+  </li>
+<% end %>

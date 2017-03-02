@@ -1,13 +1,15 @@
-<h1>Your Squad</h1>
-
-<% if @errors.length > 0 %>
-  <% @errors.each do |error| %>
-    <p><%= error %></p>
+<div class="container friends-list">
+  <% if @errors.length > 0 %>
+    <% @errors.each do |error| %>
+      <p><%= error %></p><br>
+    <% end %>
   <% end %>
-<% end %>
 
+<h4 class="bg-danger">my squad</h4>
 
-<% @friends.each do |friend| %>
-  <%=friend.name%><%= friend.phone_number %><br>
-<% end %>
-
+  <% @friends.each do |friend| %>
+    <li class="list-group-item list-group-item-danger squad-list">
+      <%= friend.name %> <%= friend.phone_number %>
+    </li>
+    <% end %>
+</div>

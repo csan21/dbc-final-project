@@ -1,8 +1,14 @@
-<h1>Add a friend on Squad</h1>
-
-<form method="post" action="/users/<%= session[:user_id] %>/friendships">
-  <input type="text" name="name" placeholder="Name"><br>
-  <input type="tel" name="phone">
-  <br><br>
-  <input type="submit" value="Submit">
-</form>
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+      <div class="account-wall">
+        <p class="sign-in">add to my squad</p>
+        <form class="form-signin" action="/users/<%= session[:user_id] %>/friendships" method="POST">
+        <input type="name" name="name" class="form-control" placeholder="Name" required autofocus>
+        <input type="tel" name="phone" class="form-control" placeholder="Phone number" required>
+        <button class="btn btn-md btn-warning btn-block" type="submit">squad up</button><br>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
