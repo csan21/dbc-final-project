@@ -26,4 +26,6 @@ Rails.application.routes.draw do
     resources :users, param: :access_token
     resources :password_resets, only: [:new, :create, :edit, :update]
   end
+
+  resources :audience_votes, only: [:index]
 end

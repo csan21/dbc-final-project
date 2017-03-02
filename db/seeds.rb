@@ -8,11 +8,11 @@ users = [
 User.create!(users)
 
 polls = [
-  { question: "Question one", expiration: Time.now.tomorrow, creator_id: 1 },
-  { question: "Question two", expiration: Time.now.tomorrow, creator_id: 2 },
-  { question: "Question three", expiration: Time.now.tomorrow, creator_id: 3 },
-  { question: "Question four", expiration: Time.now.tomorrow, creator_id: 4 },
-  { question: "Question five", expiration: Time.now, creator_id: 1, comment: "going with my gut", active?: false }
+  { question: "What do you want for dinner?", expiration: Time.now + 600, creator_id: 1 },
+  { question: "Which baseball team do you like?", expiration: Time.now + 600, creator_id: 2 },
+  { question: "Should I meander to work or take a pewship?", expiration: Time.now + 600, creator_id: 3 },
+  { question: "Have you been to Morocco?", expiration: Time.now + 600, creator_id: 4 },
+  { question: "Who wins in a fight - Hall or Oates?", expiration: Time.now, creator_id: 1, comment: "going with my gut", active?: false }
 ]
 
 Poll.create!(polls)
@@ -20,16 +20,16 @@ Poll.create!(polls)
 polls_array = Poll.all.map { |poll| poll.id }
 
 answers = [
-  { text: "yes", poll_id: polls_array[4], chosen?: true },
-  { text: "no", poll_id: polls_array[4] },
-  { text: "yes", poll_id: polls_array[1] },
-  { text: "no", poll_id: polls_array[1] },
-  { text: "yes", poll_id: polls_array[2] },
-  { text: "no", poll_id: polls_array[2] },
+  { text: "Hall", poll_id: polls_array[4], chosen?: true },
+  { text: "Oates", poll_id: polls_array[4] },
+  { text: "Cubs", poll_id: polls_array[1] },
+  { text: "White Sox", poll_id: polls_array[1] },
+  { text: "meander", poll_id: polls_array[2] },
+  { text: "pewship", poll_id: polls_array[2] },
   { text: "yes", poll_id: polls_array[3] } ,
   { text: "no", poll_id: polls_array[3] },
-  { text: "yes", poll_id: polls_array[0] },
-  { text: "no", poll_id: polls_array[0] }
+  { text: "pizza", poll_id: polls_array[0] },
+  { text: "a pile of lettuce", poll_id: polls_array[0] }
 ]
 
 Answer.create!(answers)

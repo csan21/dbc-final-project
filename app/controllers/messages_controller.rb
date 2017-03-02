@@ -23,8 +23,12 @@ class MessagesController < ApplicationController
       else
         body = "You need to Squad Up"
       end
+    elsif params["Body"] == "yes"
+      AudienceVote.create(from: params["From"], yes?: true)
+    elsif params["Body"] == "no"
+      AudienceVote.create(from: params["From"], yes?: false)
     else
-      body = "I don't quite understand..."
+      body = "I don't understand the question, and I won't respond to it."
     end
 
     sms = @client.messages.create(
