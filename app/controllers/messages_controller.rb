@@ -10,7 +10,7 @@ class MessagesController < ApplicationController
       friendship = Friendship.find_by(id: message_body[1].to_i)
       friendship.update_attribute(:accepted?, true)
       user = User.find_by(id: friendship.accepter_id)
-      body = "Thanks for accepting this friend request! Register and make your own polls at https://dbc-squad.herokuapp.com/#{user.invite_code}"
+      body = "Thanks for accepting this friend request! Register and make your own polls at https://dbc-squad.herokuapp.com/signup/#{user.invite_code}"
     elsif message_body[0].downcase == "vote"
       @user = User.find_by(phone_number: params["From"])
       @vote = Vote.new(user_id: @user.id, answer_id: message_body[1].to_i)
