@@ -73,10 +73,22 @@ $(document).ready(function() {
 var updateExpirationTimer = function(expirationMoment){
   var expirationMessage;
   if ( moment().isBefore(expirationMoment)){
-    expirationMessage = expirationMoment.countdown().toString();
-    expirationMessage += " left to vote";
+    // expirationMessage = expirationMoment.countdown().toString();
+    var secondsLeft = Math.floor(expirationMoment.diff(moment(), 'secs') / 1000);
+    var minutesLeft = Math.floor(secondsLeft / 60);
+    secondsLeft = secondsLeft % 60;
+    if (secondsLeft < 10){
+      secondsLeft = `0${secondsLeft}`;
+    }
+    if (minutesLeft > 0){
+      expirationMessage = `${minutesLeft}:${secondsLeft}`;
+  //  } else {
+  //    expirationMessage = `${secondsLeft} sec left`;
+   }
+    console.log(expirationMessage);
+    // expirationMessage += " left to vote";
   } else {
-    expirationMessage = "Poll finished " + expirationMoment.fromNow();
+    expirationMessage = "Poll finished."
   }
   $("#poll-timer").text(expirationMessage);
 }
