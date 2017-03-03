@@ -29,7 +29,8 @@ users = [
   { name: "Chris", email: "24@squad.com", phone_number: '17085410176', password: "password", password_confirmation: "password"},
   { name: "Chase", email: "25@squad.com", phone_number: '18156018881', password: "password", password_confirmation: "password"},
   { name: "Nick", email: "26@squad.com", phone_number: '18474215983', password: "password", password_confirmation: "password"},
-  { name: "Ashley", email: "27@squad.com", phone_number: '15039993885', password: "password", password_confirmation: "password"}
+  { name: "Ashley", email: "27@squad.com", phone_number: '15039993885', password: "password", password_confirmation: "password"},
+  { name: "Vadim", email: "28@squad.com", phone_number: '12484443332', password: "password", password_confirmation: "password"}
 ]
 
 # users = [
@@ -44,10 +45,10 @@ users = [
 User.create!(users)
 
 polls = [
-  { question: "What do you want for dinner?", expiration: Time.now + 600, creator_id: 1 },
-  { question: "Which baseball team do you like?", expiration: Time.now + 600, creator_id: 2 },
-  { question: "Should I meander to work or take a pewship?", expiration: Time.now + 600, creator_id: 3 },
-  { question: "Have you been to Morocco?", expiration: Time.now + 600, creator_id: 4 },
+  { question: "What do you want for dinner?", expiration: Time.now + 6000, creator_id: 1 },
+  { question: "Which baseball team do you like?", expiration: Time.now + 6000, creator_id: 2 },
+  { question: "Should I meander to work or take a pewship?", expiration: Time.now + 6000, creator_id: 3 },
+  { question: "Have you been to Morocco?", expiration: Time.now + 6000, creator_id: 4 },
   { question: "Who wins in a fight - Hall or Oates?", expiration: Time.now, creator_id: 1, comment: "going with my gut", active?: false }
 ]
 
@@ -109,7 +110,8 @@ friends = [
   { adder_id: 4, accepter_id: 28, accepted?: true },
   { adder_id: 4, accepter_id: 29, accepted?: true },
   { adder_id: 4, accepter_id: 30, accepted?: true },
-  { adder_id: 4, accepter_id: 31, accepted?: true }
+  { adder_id: 4, accepter_id: 31, accepted?: true },
+  { adder_id: 4, accepter_id: 32, accepted?: true }
 ]
 
 Friendship.create!(friends)
