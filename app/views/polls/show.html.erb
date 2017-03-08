@@ -1,66 +1,68 @@
-<h4 class="bg-primary"><%= @poll.creator.name %> asks:</h4>
-  <div class="alert alert-warning question-box" role="alert">
-    <%= @poll.question %>
-  </div>
+<div class="col-sm-8 col-sm-offset-2 col-md-4 col-md-offset-4">
+  <h4 class="bg-primary"><%= @poll.creator.name %> asks:</h4>
+    <div class="alert alert-warning question-box" role="alert">
+      <%= @poll.question %>
+    </div>
 
-<div class="container poll-container">
-  <% if @poll.comment %>
-    Comment: <%= @poll.comment %><br><br>
-  <% end %>
-
-  <% if @poll.image.exists? %>
-    <img src="<%= @poll.image.url(:medium) %>">
-  <% end %>
-
-<div id="container" class="poll-page">
-  <% if @poll.current? %>
-    <p class="poll-timer">
-      <span id="poll-timer"></span>
-    </p>
-    <br><br>
-  <% end %>
-
-<% if @poll.creator_id == session[:user_id] %>
-
-  <div id="poll-votes">
-    <%= render partial: 'polls/poll_votes', layout: false, locals: {poll: @poll} %>
-  </div>
-    <% if @poll.current? == true %>
-      <%= link_to "End this poll", edit_user_poll_path %>
+  <div class="container poll-container">
+    <% if @poll.comment %>
+      Comment: <%= @poll.comment %><br><br>
     <% end %>
 
-<% else %>
+    <% if @poll.image.exists? %>
+      <img src="<%= @poll.image.url(:medium) %>">
+    <% end %>
 
-  <% if @poll.votes.where(user_id: session[:user_id]).length > 0 && @poll.current? %>
-    Thanks for voting!<br><br>
+  <div id="container" class="poll-page">
+    <% if @poll.current? %>
+      <p class="poll-timer">
+        <span id="poll-timer"></span>
+      </p>
+      <br><br>
+    <% end %>
+
+  <% if @poll.creator_id == session[:user_id] %>
+
     <div id="poll-votes">
-    <%= render partial: 'polls/poll_votes', layout: false, locals: {poll: @poll} %>
+      <%= render partial: 'polls/poll_votes', layout: false, locals: {poll: @poll} %>
     </div>
-  <% elsif @poll.votes.where(user_id: session[:user_id]).length > 0 %>
-  <div id="poll-votes">
-    <%= render partial: 'polls/poll_votes', layout: false, locals: {poll: @poll} %>
-  </div>
-  <% else %>
-  <div id="poll-choice">
-      <div class="alert alert-success poll-left">
-        <%= @poll.answers[0].text %>
-      </div>
-      <div class="alert alert-danger poll-right">
-        <%= @poll.answers[1].text %>
-      </div>
-    </div>
+      <% if @poll.current? == true %>
+        <%= link_to "End this poll", edit_user_poll_path %>
+      <% end %>
 
-  <div id="poll-votes-swipe">
-      <div id="poll-answer-left">
-        <%= button_to votes_path(answer_id: @poll.answers[0].id), :class=>"btn btn-large btn-block btn-success glyphicon glyphicon-arrow-left yes-arrow", :remote => true do %>
-        <% end %>
+  <% else %>
+
+    <% if @poll.votes.where(user_id: session[:user_id]).length > 0 && @poll.current? %>
+      Thanks for voting!<br><br>
+      <div id="poll-votes">
+      <%= render partial: 'polls/poll_votes', layout: false, locals: {poll: @poll} %>
       </div>
-      <div id="poll-answer-right">
-        <%= button_to votes_path(answer_id: @poll.answers[1].id), :class=>"btn btn-large btn-block btn-danger glyphicon glyphicon-arrow-right no-arrow", :remote => true do %>
-        <% end %>
-      </div>
+    <% elsif @poll.votes.where(user_id: session[:user_id]).length > 0 %>
+    <div id="poll-votes">
+      <%= render partial: 'polls/poll_votes', layout: false, locals: {poll: @poll} %>
     </div>
+    <% else %>
+    <div id="poll-choice">
+        <div class="alert alert-success poll-left">
+          <%= @poll.answers[0].text %>
+        </div>
+        <div class="alert alert-danger poll-right">
+          <%= @poll.answers[1].text %>
+        </div>
+      </div>
+
+    <div id="poll-votes-swipe">
+        <div id="poll-answer-left">
+          <%= button_to votes_path(answer_id: @poll.answers[0].id), :class=>"btn btn-large btn-block btn-success glyphicon glyphicon-arrow-left yes-arrow", :remote => true do %>
+          <% end %>
+        </div>
+        <div id="poll-answer-right">
+          <%= button_to votes_path(answer_id: @poll.answers[1].id), :class=>"btn btn-large btn-block btn-danger glyphicon glyphicon-arrow-right no-arrow", :remote => true do %>
+          <% end %>
+        </div>
+      </div>
+    <% end %>
   <% end %>
-<% end %>
-</div>
+    </div>
+  </div>
 </div>

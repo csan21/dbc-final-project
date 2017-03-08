@@ -1,15 +1,17 @@
-<div class="container friends-list">
-  <% if @errors.length > 0 %>
-    <% @errors.each do |error| %>
-      <p><%= error %></p><br>
+<div class="col-sm-8 col-sm-offset-2 col-md-4 col-md-offset-4">
+  <div class="container friends-list">
+    <% if @errors.length > 0 %>
+      <% @errors.each do |error| %>
+        <p><%= error %></p><br>
+      <% end %>
     <% end %>
-  <% end %>
 
-<h4 class="bg-danger">my squad</h4>
+  <h4 class="bg-danger">my squad</h4>
 
-  <% @friends.each do |friend| %>
-    <li class="list-group-item list-group-item-danger squad-list">
-      <%= friend.name %> <%= friend.phone_number %>
-    </li>
-    <% end %>
+    <% @friends.each do |friend| %>
+      <li class="list-group-item list-group-item-danger squad-list">
+        <%= friend.name %> <%= friend.phone_number %>
+      </li>
+      <% end %>
+  </div>
 </div>
