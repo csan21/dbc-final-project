@@ -1,49 +1,51 @@
 <div id="dashboard">
-<h2><%= @user.name %></h2>
+  <div class="col-sm-8 col-sm-offset-2 col-md-4 col-md-offset-4">
 
-<p id="demo"></p>
+  <h2><%= @user.name %></h2>
 
-<div class="container friend-requests">
-  <% if @user.incoming_friend_requests.length > 0 %>
-    <u>friend requests</u><br><br>
-    <% @user.incoming_friend_requests.each do |pending_friend| %>
-      <strong><%= pending_friend.adder.name %></strong><br>
-      <button type="button" class="btn btn-success"><%= link_to "accept", user_friendship_path(user_id: @user.id, id: pending_friend.id), method: :put %> </button> <button type="button" class="btn btn-danger"> <%= link_to "reject", user_friendship_path(user_id: @user.id, id: pending_friend.id), method: :delete %>
-      </button><br><br>
-    <% end %>
-  <% end %>
-</div>
+  <p id="demo"></p>
 
-  <h4 class="bg-primary">polls to vote on</h4>
-
-  <div class="panel-body need">
-    <% @user.polls_to_answer.each do |poll| %>
-      <li class="list-group-item list-group-item-warning"><%= link_to poll.question, user_poll_path(user_id: poll.creator_id, id: poll.id) %></li>
+  <div class="container friend-requests">
+    <% if @user.incoming_friend_requests.length > 0 %>
+      <u>friend requests</u><br><br>
+      <% @user.incoming_friend_requests.each do |pending_friend| %>
+        <strong><%= pending_friend.adder.name %></strong><br>
+        <button type="button" class="btn btn-success"><%= link_to "accept", user_friendship_path(user_id: @user.id, id: pending_friend.id), method: :put %> </button> <button type="button" class="btn btn-danger"> <%= link_to "reject", user_friendship_path(user_id: @user.id, id: pending_friend.id), method: :delete %>
+        </button><br><br>
+      <% end %>
     <% end %>
   </div>
 
-  <h4 class="bg-success">my current polls</h4>
+    <h4 class="bg-primary">polls to vote on</h4>
 
-  <div class="panel-body current">
-    <% @user.sorted_created_current_polls.each do |poll| %>
-      <li class="list-group-item list-group-item-current"><%= link_to poll.question, user_poll_path(user_id: poll.creator_id, id: poll.id) %></li>
-    <% end %>
+    <div class="panel-body need">
+      <% @user.polls_to_answer.each do |poll| %>
+        <li class="list-group-item list-group-item-warning"><%= link_to poll.question, user_poll_path(user_id: poll.creator_id, id: poll.id) %></li>
+      <% end %>
+    </div>
+
+    <h4 class="bg-success">my current polls</h4>
+
+    <div class="panel-body current">
+      <% @user.sorted_created_current_polls.each do |poll| %>
+        <li class="list-group-item list-group-item-current"><%= link_to poll.question, user_poll_path(user_id: poll.creator_id, id: poll.id) %></li>
+      <% end %>
+    </div>
+
+    <h4 class="bg-info">recent votes</h4>
+
+    <div class="panel-body recent">
+      <% @user.recent_taken_polls.each do |poll| %>
+        <li class="list-group-item list-group-item-recent"><%= link_to poll.question, user_poll_path(user_id: poll.creator_id, id: poll.id) %></li>
+      <% end %>
+    </div>
+
+    <h4 class="bg-danger">my archive</h4>
+
+    <div class="panel-body archived">
+      <% @user.sorted_created_old_polls.each do |poll| %>
+        <li class="list-group-item list-group-item-danger"><%= link_to poll.question, user_poll_path(user_id: poll.creator_id, id: poll.id) %></li>
+      <% end %>
+    </div>
   </div>
-
-  <h4 class="bg-info">recent votes</h4>
-
-  <div class="panel-body recent">
-    <% @user.recent_taken_polls.each do |poll| %>
-      <li class="list-group-item list-group-item-recent"><%= link_to poll.question, user_poll_path(user_id: poll.creator_id, id: poll.id) %></li>
-    <% end %>
-  </div>
-
-  <h4 class="bg-danger">my archive</h4>
-
-  <div class="panel-body archived">
-    <% @user.sorted_created_old_polls.each do |poll| %>
-      <li class="list-group-item list-group-item-danger"><%= link_to poll.question, user_poll_path(user_id: poll.creator_id, id: poll.id) %></li>
-    <% end %>
-  </div>
-
 </div>
