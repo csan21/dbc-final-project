@@ -8,7 +8,7 @@ Squad is a mobile-friendly, friend to friend instant polling application. Squad 
 
 Currently deployed on [Heroku] (http://dbc-squad.herokuapp.com/)
 
-* [Pavan Sarguru] (https://github.com/pksarguru)
-* [Nick Devlin] (https://github.com/nickdevlin)
-* [Chris Santos] (https://github.com/csan21)
-* [Cody Fuller] (https://github.com/cdfuller)
+* [Pavan Sarguru](https://github.com/pksarguru)
+* [Nick Devlin](https://github.com/nickdevlin)
+* [Chris Santos](https://github.com/csan21)
+* [Cody Fuller](https://github.com/cdfuller)
