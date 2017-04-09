@@ -11,6 +11,7 @@ module Api
 
     # GET /users/1
     def show
+      @user = User.find_by(access_token: params[:access_token])
     end
 
     # GET /users/new

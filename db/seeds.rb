@@ -8,7 +8,7 @@ users = [
   { name: "Mike", email: "3@squad.com", phone_number: '18477572877', password: "password", password_confirmation: "password"},
   { name: "Karl", email: "4@squad.com", phone_number: '17144015736', password: "password", password_confirmation: "password"},
   { name: "Chase", email: "5@squad.com", phone_number: '16084387697', password: "password", password_confirmation: "password"},
-  { name: "Elsie", email: "6@squad.com", phone_number: '17735766393', password: "password", password_confirmation: "password"},
+  { name: "Elsie", email: "6@squad.com", phone_number: '17735766373', password: "password", password_confirmation: "password"},
   { name: "Derek", email: "7@squad.com", phone_number: '17735991519', password: "password", password_confirmation: "password"},
   { name: "Pete", email: "8@squad.com", phone_number: '18132634315', password: "password", password_confirmation: "password"},
   { name: "Al", email: "9@squad.com", phone_number: '12246220547', password: "password", password_confirmation: "password"},
